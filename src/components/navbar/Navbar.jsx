@@ -13,6 +13,15 @@ function Navbar() {
     window.addEventListener("scroll", checkScroll);
   }, []);
 
+  const currentUser = {
+    id: 1,
+    username: "Claire",
+    isSeller: true,
+  };
+
+  function getFirstChar(name) {
+    return name.charAt(0);
+  }
   return (
     // when the state of isActive changes to ture, it nav bar turn its bg color to white
     <div className={isActive ? "nav navActive" : "nav"}>
@@ -26,8 +35,31 @@ function Navbar() {
           <span className="nav-topMenu__text">Explore</span>
           <span className="nav-topMenu__text">English</span>
           <span className="nav-topMenu__text">Sign in</span>
-          <span className="nav-topMenu__text">Become a Seller</span>
-          <button className="nav-topMenu__btn">Join</button>
+          {!currentUser?.isSeller && (
+            <span className="nav-topMenu__text">Become a Seller</span>
+          )}
+          {!currentUser && <button className="nav-topMenu__btn">Join</button>}
+          {currentUser && (
+            <>
+              <div className="nav-user">
+                <div className="nav-user__initial">
+                  {getFirstChar(currentUser?.username)}
+                </div>
+                <span className="nav-user__name">{currentUser?.username}</span>
+                <div className="nav-user__options">
+                  {currentUser?.isSeller && (
+                    <>
+                      <span>Gigs</span>
+                      <span>Add New Gig</span>
+                    </>
+                  )}
+                  <span>Orders</span>
+                  <span>Messages</span>
+                  <span>Logout</span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
       {/*   when the state of isActive changes to ture, bottom nav bar appears */}
