@@ -58,6 +58,11 @@
       width: 12.5rem;
       font-weight: 300;
       color: gray;
+      &Link,
+      &Link:visited {
+        color: gray;
+        text-decoration: none;
+      }
     }
   }
   &-top {

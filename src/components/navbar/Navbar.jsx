@@ -49,13 +49,23 @@ function Navbar() {
                 <div className="nav-user__options">
                   {currentUser?.isSeller && (
                     <>
-                      <span>Gigs</span>
-                      <span>Add New Gig</span>
+                      <Link className="nav-user__optionsLink" to="/mygigs">
+                        Gigs
+                      </Link>
+                      <Link className="nav-user__optionsLink" to="/add">
+                        Add New Gig
+                      </Link>
                     </>
                   )}
-                  <span>Orders</span>
-                  <span>Messages</span>
-                  <span>Logout</span>
+                  <Link className="nav-user__optionsLink" to="/orders">
+                    Orders
+                  </Link>
+                  <Link className="nav-user__optionsLink" to="/messages">
+                    Messages
+                  </Link>
+                  <Link className="nav-user__optionsLink" to="/">
+                    Logout
+                  </Link>
                 </div>
               </div>
             </>
@@ -67,14 +77,30 @@ function Navbar() {
         <>
           <hr className="nav-divider" />
           <div className="nav-bttm">
-            <span className="nav-bttm__list">Graphics & Design</span>
-            <span className="nav-bttm__list">Video & Animation</span>
-            <span className="nav-bttm__list">Writing & Translation</span>
-            <span className="nav-bttm__list">AI Services</span>
-            <span className="nav-bttm__list">Digital Marketing</span>
-            <span className="nav-bttm__list">Programming & Tech</span>
-            <span className="nav-bttm__list">Business</span>
-            <span className="nav-bttm__list">Lifestyle</span>
+            <Link className="nav-user__optionsLink" to="/">
+              Graphics & Design
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              Video & Animation
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              Writing & Translation
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              AI Services
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              Digital Marketing
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              Programming & Tech
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              Business
+            </Link>
+            <Link className="nav-user__optionsLink" to="/">
+              Lifestyle
+            </Link>
           </div>
           <hr />
         </>
