@@ -1,0 +1,22 @@
+@use "./src/styles/_color" as cl;
+
+.partners {
+  background-color: #fafafa;
+  height: 6.25rem;
+  display: flex;
+  justify-content: center;
+
+  &-content {
+    max-width: 760px;
+    display: flex;
+    align-items: center;
+    gap: 2.75rem;
+    color: cl.$sectionBg;
+    font-weight: 500;
+
+    &__logo {
+      height: 4rem;
+      object-fit: contain;
+    }
+  }
+}
