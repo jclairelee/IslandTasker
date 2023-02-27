@@ -75,6 +75,20 @@
     &Logo {
       font-size: 2.125rem;
       font-weight: bold;
+      &__link {
+        text-decoration: none;
+        color: cl.$white;
+        &:visited {
+          @extend .nav-topLogo__link;
+        }
+        &Active {
+          color: cl.$logoFont;
+          text-decoration: none;
+          &:visited {
+            @extend .nav-topLogo__linkActive;
+          }
+        }
+      }
       // &__text {
       // }
       &__dot {

@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 
 function Navbar() {
+  const { pathname } = useLocation();
+
   const [isActive, setIsActive] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const checkScroll = () => {
     window.scrollY > 0 ? setIsActive(true) : setIsActive(false);
@@ -22,32 +25,38 @@ function Navbar() {
   function getFirstChar(name) {
     return name.charAt(0);
   }
+
+  console.log(isOpen);
   return (
-    // when the state of isActive changes to ture, it nav bar turn its bg color to white
-    <div className={isActive ? "nav navActive" : "nav"}>
+    <div className={isActive || pathname !== "/" ? "nav navActive" : "nav"}>
       <div className="nav-top">
         <div className="nav-topLogo">
-          <span className="nav-topLogo__text">fiverr</span>
-          <span className="nav-topLogo__dot">.</span>
+          <Link
+            to="/"
+            className={
+              isActive ? "nav-topLogo__linkActive" : "nav-topLogo__link"
+            }
+          >
+            <span className="nav-topLogo__text">fiverr</span>
+            <span className="nav-topLogo__dot">.</span>
+          </Link>
         </div>
         <div className="nav-topMenu">
           <span className="nav-topMenu__text">Fiverr Business</span>
           <span className="nav-topMenu__text">Explore</span>
           <span className="nav-topMenu__text">English</span>
-          <span className="nav-topMenu__text">Sign in</span>
           {!currentUser?.isSeller && (
             <span className="nav-topMenu__text">Become a Seller</span>
           )}
-          {!currentUser && <button className="nav-topMenu__btn">Join</button>}
-          {currentUser && (
-            <>
-              <div className="nav-user">
-                <div className="nav-user__initial">
-                  {getFirstChar(currentUser?.username)}
-                </div>
-                <span className="nav-user__name">{currentUser?.username}</span>
+          {currentUser ? (
+            <div className="nav-user" onClick={() => setIsOpen(!isOpen)}>
+              <div className="nav-user__initial">
+                {getFirstChar(currentUser?.username)}
+              </div>
+              <span>{currentUser?.username}</span>
+              {isOpen && (
                 <div className="nav-user__options">
-                  {currentUser?.isSeller && (
+                  {currentUser.isSeller && (
                     <>
                       <Link className="nav-user__optionsLink" to="/mygigs">
                         Gigs
@@ -67,13 +76,20 @@ function Navbar() {
                     Logout
                   </Link>
                 </div>
-              </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <span>Sign in</span>
+              <Link className="nav-user__optionsLink" to="/register">
+                <button>Join</button>
+              </Link>
             </>
           )}
         </div>
       </div>
-      {/*   when the state of isActive changes to ture, bottom nav bar appears */}
-      {isActive && (
+
+      {(isActive || pathname !== "/") && (
         <>
           <hr className="nav-divider" />
           <div className="nav-bttm">
