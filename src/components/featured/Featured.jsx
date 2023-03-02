@@ -1,7 +1,7 @@
 import React from "react";
 import "./Featured.scss";
-import man from "../../../public/img/man.png";
-import search from "../../../public/img/search.png";
+import man from "/img/man.png";
+import search from "/img/search.png";
 
 function Featured() {
   return (
@@ -9,7 +9,7 @@ function Featured() {
       <div className="featured-wrapper">
         <div className="featured__left">
           <h1 className="featured__left__header">
-            Find the perfect{" "}
+            Find the perfect
             <span className="featured__left__point">freelance</span> services
             for your business
           </h1>

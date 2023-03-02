@@ -45,7 +45,7 @@ function Service() {
             Always know what you'll pay upfront. Your payment isn't released
             until you approve the work.
           </p>
-          <div className="service__title">
+          <div className="service__item__title">
             <img
               src="./img/check.png"
               alt=""

@@ -26,7 +26,6 @@ function Navbar() {
     return name.charAt(0);
   }
 
-  console.log(isOpen);
   return (
     <div className={isActive || pathname !== "/" ? "nav navActive" : "nav"}>
       <div className="nav-top">
