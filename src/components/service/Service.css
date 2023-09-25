@@ -1,0 +1,43 @@
+.service {
+  background-color: #f1fdf7;
+  display: flex;
+  justify-content: center;
+  padding: 100px 0px;
+}
+.service-container {
+  width: 1400px;
+  display: flex;
+  align-items: center;
+  gap: 200px;
+}
+.service__item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.service__item__video {
+  width: 720px;
+}
+.service__item__header {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.service__item__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #666;
+}
+.service__item__checkmark {
+  width: 24px;
+  height: 24px;
+}
+.service__item__desc {
+  font-size: 18px;
+  font-weight: 300;
+  color: gray;
+  line-height: 28px;
+  letter-spacing: 1px;
+}/*# sourceMappingURL=Service.css.map */

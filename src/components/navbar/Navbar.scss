@@ -1,0 +1,141 @@
+@use "./src/styles/_color" as cl;
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: cl.$primaryCl;
+  color: cl.$white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: 0.5s all ease;
+  &Active {
+    background-color: cl.$white;
+    color: black;
+    button {
+      background-color: cl.$white !important;
+      color: cl.$accentCl !important;
+      border: 1px solid cl.$accentCl !important;
+      &:hover {
+        background-color: cl.$accentCl !important;
+        border-color: cl.$accentCl !important;
+        color: cl.$white !important;
+      }
+    }
+  }
+  &-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    position: relative;
+    &__initial {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      object-fit: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      background-color: cl.$accentCl;
+    }
+    // &__name {
+    // }
+    &__options {
+      position: absolute;
+      top: 3.125rem;
+      right: 0;
+      padding: 1.25rem;
+      background-color: white;
+      border-radius: 10px;
+      z-index: 999;
+      border: 1px solid lightgrey;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 12.5rem;
+      font-weight: 300;
+      color: gray;
+      &Link,
+      &Link:visited {
+        color: gray;
+        text-decoration: none;
+      }
+    }
+  }
+  &-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    width: 1400px;
+    margin: 0 auto;
+    &Logo {
+      font-size: 2.125rem;
+      font-weight: bold;
+      &__link {
+        text-decoration: none;
+        color: cl.$white;
+        &:visited {
+          @extend .nav-topLogo__link;
+        }
+        &Active {
+          color: cl.$logoFont;
+          text-decoration: none;
+          &:visited {
+            @extend .nav-topLogo__linkActive;
+          }
+        }
+      }
+      // &__text {
+      // }
+      &__dot {
+        font-weight: bold;
+        color: cl.$accentCl;
+      }
+    }
+    &Menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif;
+      &__text {
+        white-space: nowrap;
+      }
+      &__btn {
+        color: cl.$white;
+        padding: 0.625rem 1.25rem;
+        border-radius: 5px;
+        border: 1px solid cl.$white;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+          background-color: cl.$accentCl;
+          border-color: cl.$accentCl;
+        }
+      }
+    }
+  }
+
+  &-divider {
+    width: calc(100% - 2px);
+    height: 0;
+    border-top: 0.5px solid #ebe9e9;
+    border-bottom: 0.5px solid #ebe9e9;
+  }
+
+  &-bttm {
+    margin: 0 auto;
+    width: 1400px;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+  }
+}

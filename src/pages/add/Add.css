@@ -1,0 +1,47 @@
+.add {
+  display: flex;
+  justify-content: center;
+}
+.add-container {
+  width: 1400px;
+  padding: 50px 0px;
+}
+.add-container h1 {
+  width: -moz-max-content;
+  width: max-content;
+  margin-bottom: 30px;
+  color: gray;
+  font-weight: 300;
+}
+.add__sections {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+}
+.add__sections label {
+  color: gray;
+  font-size: 18px;
+}
+.add__sections__info, .add__sections__details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+}
+.add__sections__info input,
+.add__sections__info select,
+.add__sections__info textarea, .add__sections__details input,
+.add__sections__details select,
+.add__sections__details textarea {
+  padding: 20px;
+}
+.add__sections__info button, .add__sections__details button {
+  border: none;
+  padding: 20px;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #1dbf73;
+  cursor: pointer;
+}/*# sourceMappingURL=Add.css.map */
