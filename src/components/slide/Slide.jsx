@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Slide.scss";
-import Slider from "infinite-react-carousel";
 
-const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+const Slide = ({ children }) => {
+  const [moveIndex, setMoveIndex] = useState(0);
+  const showPrev = () => {
+    if (moveIndex === 0) {
+      return;
+    }
+    setMoveIndex((prev) => prev + 10);
+  };
+
+  const showNext = () => {
+    if (moveIndex === -80) {
+      return;
+    } else {
+      setMoveIndex((prev) => prev - 10);
+    }
+  };
+  console.log(moveIndex);
   return (
     <div className="slideList">
       <div className="slideList-content">
-        <Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>
+        <div
+          className="slideList-content__cards"
+          style={{ transform: `translateX(${moveIndex}%)` }}
+        >
           {children}
-        </Slider>
+        </div>
+        <button
+          className="slideList-content__arrow slideList-content__prev"
+          onClick={showPrev}
+        >
+          &lt;
+        </button>
+        <button
+          className="slideList-content__arrow slideList-content__next"
+          onClick={showNext}
+        >
+          &gt;
+        </button>
       </div>
     </div>
   );

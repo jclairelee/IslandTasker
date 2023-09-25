@@ -1,10 +1,11 @@
 .catCard {
-  width: 15.75rem;
-  height: 20rem;
+  width: 270px;
+  height: 345px;
   color: white;
   border-radius: 5px;
   position: relative;
   cursor: pointer;
+  padding: 0 18px 0 0;
 
   &__pic {
     width: 100%;

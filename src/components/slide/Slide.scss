@@ -1,26 +1,33 @@
 .slideList {
   display: flex;
   justify-content: center;
-  padding: 100px 0px;
+  width: 1400px;
+  margin: auto auto;
   &-content {
-    width: 1400px;
-    position: relative;
-  }
-  .carousel-initialized {
-    position: static;
-  }
-  .carousel-prev,
-  .carousel-next {
-    width: 50px;
-    height: 50px;
-    background-color: rgb(243, 243, 243);
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-  }
-  .carousel-prev {
-    left: -25px;
+    display: flex;
+    overflow: hidden;
+    &__cards {
+      display: flex;
+      position: relative;
+      width: 1400px;
+    }
+    &__arrow {
+      border-radius: 50%;
+      height: 4rem;
+      width: 4rem;
+      font-size: 3rem;
+      color: #555555;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+      border: 0px;
+      background-color: white;
+    }
+    &__prev {
+      position: absolute;
+      left: 6rem;
+    }
+    &__next {
+      position: absolute;
+      right: 6rem;
+    }
   }
 }
