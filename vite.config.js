@@ -5,4 +5,5 @@ import esmodule from "vite-plugin-esmodule";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/",
 });
