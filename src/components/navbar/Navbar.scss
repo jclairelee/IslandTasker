@@ -1,18 +1,22 @@
 @use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
 
 .nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: cl.$primaryCl;
-  color: cl.$white;
+  background-color: cl.$white;
+  color: cl.$primaryCl;
   position: sticky;
   top: 0;
   z-index: 999;
   transition: 0.5s all ease;
   &Active {
-    background-color: cl.$white;
-    color: black;
+    background-color: cl.$primaryCl;
+    color: cl.$accentCl;
+    // transition: 2.5s all ease-in-out;
+    width: 100%;
     button {
       background-color: cl.$white !important;
       color: cl.$accentCl !important;
@@ -48,7 +52,7 @@
       top: 3.125rem;
       right: 0;
       padding: 1.25rem;
-      background-color: white;
+      background-color: cl.$accentCl;
       border-radius: 10px;
       z-index: 999;
       border: 1px solid lightgrey;
@@ -57,10 +61,10 @@
       gap: 10px;
       width: 12.5rem;
       font-weight: 300;
-      color: gray;
+      color: cl.$text;
       &Link,
       &Link:visited {
-        color: gray;
+        color: cl.$white;
         text-decoration: none;
       }
     }
@@ -77,12 +81,12 @@
       font-weight: bold;
       &__link {
         text-decoration: none;
-        color: cl.$white;
+        color: cl.$primaryCl;
         &:visited {
           @extend .nav-topLogo__link;
         }
         &Active {
-          color: cl.$logoFont;
+          color: cl.$white;
           text-decoration: none;
           &:visited {
             @extend .nav-topLogo__linkActive;
@@ -101,7 +105,7 @@
       align-items: center;
       gap: 2rem;
       font-weight: 500;
-      font-family: "Montserrat", sans-serif;
+
       &__text {
         white-space: nowrap;
       }
@@ -124,8 +128,8 @@
   &-divider {
     width: calc(100% - 2px);
     height: 0;
-    border-top: 0.5px solid #ebe9e9;
-    border-bottom: 0.5px solid #ebe9e9;
+    border-top: 0.5px solid cl.$sectionBg;
+    border-bottom: 0.5px solid cl.$sectionBg;
   }
 
   &-bttm {
@@ -134,8 +138,7 @@
     padding: 10px 0px;
     display: flex;
     justify-content: space-between;
-    color: gray;
+    color: cl.$white;
     font-weight: 300;
-    font-family: "Montserrat", sans-serif;
   }
 }

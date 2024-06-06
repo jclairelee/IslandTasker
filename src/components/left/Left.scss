@@ -1,3 +1,7 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+
 .left {
   flex: 2;
   display: flex;

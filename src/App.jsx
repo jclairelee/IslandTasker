@@ -12,8 +12,7 @@ import Orders from "./pages/orders/Orders";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/singleMsg/SingleMsg";
 import MyGigs from "./pages/myGigs/MyGigs";
-import Featured from "./components/featured/Featured.jsx";
-import Partners from "./components/partners/Partners.jsx";
+
 function App() {
   const Layout = () => {
     return (

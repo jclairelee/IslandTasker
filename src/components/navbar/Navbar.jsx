@@ -18,7 +18,7 @@ function Navbar() {
 
   const currentUser = {
     id: 1,
-    username: "Claire",
+    username: "Ce",
     isSeller: true,
   };
 
@@ -36,12 +36,12 @@ function Navbar() {
               isActive ? "nav-topLogo__linkActive" : "nav-topLogo__link"
             }
           >
-            <span className="nav-topLogo__text">fiverr</span>
-            <span className="nav-topLogo__dot">.</span>
+            <span className="nav-topLogo__text">Islands</span>
+            <span className="nav-topLogo__dot">MarketPlace</span>
           </Link>
         </div>
         <div className="nav-topMenu">
-          <span className="nav-topMenu__text">Fiverr Business</span>
+          <span className="nav-topMenu__text">Local Business</span>
           <span className="nav-topMenu__text">Explore</span>
           <span className="nav-topMenu__text">English</span>
           {!currentUser?.isSeller && (
@@ -93,25 +93,25 @@ function Navbar() {
           <hr className="nav-divider" />
           <div className="nav-bttm">
             <Link className="nav-user__optionsLink" to="/">
-              Graphics & Design
+              Boats & RVs
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Video & Animation
+              Camping & Outdoor Gear
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Writing & Translation
+              Sports
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              AI Services
+              Health & Wellness
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Digital Marketing
+              Local Art
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Programming & Tech
+              Adventure Tours
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Business
+              Cycling & Biking
             </Link>
             <Link className="nav-user__optionsLink" to="/">
               Lifestyle

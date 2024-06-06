@@ -1,0 +1,29 @@
+// X-Large devices
+@mixin wideScreen {
+  @media (min-width: 1480px) {
+    @content;
+  }
+}
+@mixin bigScreen {
+  @media (min-width: 1330px) {
+    @content;
+  }
+}
+// Large devices
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+// Medium devices
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+// Small devices
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
