@@ -1,5 +1,8 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+
 .service {
-  background-color: #f1fdf7;
   display: flex;
   justify-content: center;
   padding: 100px 0px;

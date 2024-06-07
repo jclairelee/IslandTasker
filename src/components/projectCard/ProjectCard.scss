@@ -1,6 +1,8 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+
 .projectCard {
-  width: 18.75rem;
-  height: 18.75rem;
   position: relative;
   cursor: pointer;
 

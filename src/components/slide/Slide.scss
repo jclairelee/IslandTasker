@@ -1,33 +1,101 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+
 .slideList {
   display: flex;
   justify-content: center;
-  width: 1400px;
-  margin: auto auto;
+  width: 100%;
+  margin: auto;
+
   &-content {
     display: flex;
     overflow: hidden;
+    position: relative;
+    max-width: 1400px;
+    width: 100%;
+    @include bk.mobile {
+      padding: 0rem 1.25rem;
+      width: calc(100% - 2.5rem);
+    }
+    @include bk.tablet {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.desktop {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.bigScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+    }
+    @include bk.wideScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+    }
     &__cards {
       display: flex;
-      position: relative;
-      width: 1400px;
+      width: 100%;
+      transition: transform 0.3s ease;
+      animation: slideIn 2.5s ease forwards;
+      gap: 1rem;
+      @include bk.mobile {
+        gap: 0.5rem;
+      }
+      @include bk.tablet {
+        gap: 0.7rem;
+      }
+      @include bk.desktop {
+        gap: 0.85rem;
+      }
+      @include bk.bigScreen {
+        gap: 1rem;
+      }
+      @include bk.wideScreen {
+        gap: 1.25rem;
+      }
     }
+
     &__arrow {
-      border-radius: 50%;
-      height: 4rem;
-      width: 4rem;
-      font-size: 3rem;
+      background-color: transparent;
+      border: none;
+      font-size: 1.5rem;
       color: #555555;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
-      border: 0px;
-      background-color: white;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        color: #333333;
+      }
     }
-    &__prev {
-      position: absolute;
-      left: 6rem;
-    }
+
+    &__prev,
     &__next {
       position: absolute;
-      right: 6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      &__prev {
+        left: 6rem;
+      }
+      &__next {
+        right: 6rem;
+      }
     }
+  }
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -8,7 +8,7 @@ import { cards, projects } from "../../../temporaryData";
 import Service from "../../components/service/Service";
 import ServiceDark from "../../components/serviceDark/ServiceDark";
 import ProjectCard from "../../components/projectCard/ProjectCard";
-
+import Products from "../../components/products/Products";
 function Home() {
   return (
     <div className="home">
@@ -19,13 +19,13 @@ function Home() {
           <CatCard key={card.id} card={card} />
         ))}
       </Slide>
-      <Service />
-      <ServiceDark />
-      <Slide slidesToShow={4} arrowsScroll={4}>
+      <Products>
         {projects.map((card) => (
           <ProjectCard key={card.id} card={card} />
         ))}
-      </Slide>
+      </Products>
+
+      <ServiceDark />
     </div>
   );
 }

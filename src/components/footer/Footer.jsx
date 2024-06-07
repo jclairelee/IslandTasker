@@ -2,74 +2,85 @@ import React from "react";
 import "./Footer.scss";
 
 function Footer() {
+  const footerSections = [
+    {
+      title: "Categories",
+      items: [
+        "Boats & RVs",
+        "Camping & Outdoor Gear",
+        "Water Sports Equipment",
+        "Local Art",
+        "Adventure Tours",
+        "Lifestyle",
+        "Photography",
+        "Fishing Equipment",
+        "Hiking & Camping Gear",
+        "Outdoor Clothing",
+        "Island Tours",
+      ],
+    },
+    {
+      title: "About",
+      items: [
+        "Our Story",
+        "Local Partnerships",
+        "Privacy Policy",
+        "Terms of Service",
+        "Contact Us",
+      ],
+    },
+    {
+      title: "Support",
+      items: [
+        "Help & Assistance",
+        "Trust & Safety",
+        "Selling on Island Marketplace",
+        "Buying on Island Marketplace",
+      ],
+    },
+    {
+      title: "Regions",
+      items: [
+        "North Vancouver Island",
+        "Central Vancouver Island",
+        "South Vancouver Island",
+        "Pacific Rim (West Coast Vancouver Island)",
+        "Greater Victoria",
+        "Gulf Islands & Discovery Islands",
+        "Sunshine Coast",
+      ],
+    },
+    {
+      title: "More From Island Marketplace",
+      items: [
+        "Island Marketplace Pro",
+        "Island Marketplace Guides",
+        "Get Inspired",
+        "Island Marketplace Select",
+        "Island Marketplace Workspace",
+        "Island Marketplace Learning Hub",
+      ],
+    },
+  ];
+
   return (
     <div className="footer">
       <div className="footer-container">
         <div className="footer__top">
-          <div className="footer__topItem">
-            <h2 className="footer__topItem__header">Categories</h2>
-            <span>Graphics & Design</span>
-            <span>Digital Marketing</span>
-            <span>Writing & Translation</span>
-            <span>Video & Animation</span>
-            <span>Music & Audio</span>
-            <span>Programming & Tech</span>
-            <span>Data</span>
-            <span>Business</span>
-            <span>Lifestyle</span>
-            <span>Photography</span>
-            <span>Sitemap</span>
-          </div>
-          <div className="footer__topItem">
-            <h2>About</h2>
-            <span>Press & News</span>
-            <span>Partnerships</span>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-            <span>Intellectual Property Claims</span>
-            <span>Investor Relations</span>
-            <span>Contact Sales</span>
-          </div>
-          <div className="footer__topItem">
-            <h2>Support</h2>
-            <span>Help & Support</span>
-            <span>Trust & Safety</span>
-            <span>Selling on Liverr</span>
-            <span>Buying on Liverr</span>
-          </div>
-          <div className="footer__topItem">
-            <h2>Community</h2>
-            <span>Customer Success Stories</span>
-            <span>Community hub</span>
-            <span>Forum</span>
-            <span>Events</span>
-            <span>Blog</span>
-            <span>Influencers</span>
-            <span>Affiliates</span>
-            <span>Podcast</span>
-            <span>Invite a Friend</span>
-            <span>Become a Seller</span>
-            <span>Community Standards</span>
-          </div>
-          <div className="footer__topItem">
-            <h2>More From Fiverr</h2>
-            <span>Liverr Business</span>
-            <span>Liverr Pro</span>
-            <span>Liverr Logo Maker</span>
-            <span>Liverr Guides</span>
-            <span>Get Inspired</span>
-            <span>Liverr Select</span>
-            <span>ClearVoice</span>
-            <span>Liverr Workspace</span>
-            <span>Learn</span>
-            <span>Working Not Working</span>
-          </div>
+          {footerSections.map((section, index) => (
+            <div className="footer__topItem" key={index}>
+              <h2 className="footer__topItem__header">{section.title}</h2>
+              {section.items.map((item, itemIndex) => (
+                <span key={itemIndex}>{item}</span>
+              ))}
+            </div>
+          ))}
         </div>
         <hr />
         <div className="footer__bottom">
           <div className="footer__bottom-left">
-            <h2>liverr</h2>
-            <span>© Liverr International Ltd. 2023</span>
+            <h2>Island Marketplace</h2>
+            <span>© Island Marketplace Ltd. 2023</span>
           </div>
           <div className="footer__bottom-right">
             <div className="footer__bottom-right__social">
@@ -85,9 +96,8 @@ function Footer() {
             </div>
             <div className="footer__bottom-right__link">
               <img src="/img/coin.png" alt="" />
-              <span>USD</span>
+              <span>CAD</span>
             </div>
-            <img src="/img/accessibility.png" alt="" className="footer__img" />
           </div>
         </div>
       </div>

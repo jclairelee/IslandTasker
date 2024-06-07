@@ -12,11 +12,13 @@
   top: 0;
   z-index: 999;
   transition: 0.5s all ease;
+
   &Active {
     background-color: cl.$primaryCl;
     color: cl.$accentCl;
     // transition: 2.5s all ease-in-out;
     width: 100%;
+
     button {
       background-color: cl.$white !important;
       color: cl.$accentCl !important;
@@ -59,7 +61,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      width: 12.5rem;
       font-weight: 300;
       color: cl.$text;
       &Link,
@@ -73,9 +74,51 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 0;
+
+    @include bk.mobile {
+      padding: 2rem 1.25rem;
+      width: calc(100% - 2.5rem);
+    }
+    @include bk.tablet {
+      padding: 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.desktop {
+      padding: 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.bigScreen {
+      padding: 2rem 3rem;
+      width: calc(100% - 6rem);
+    }
+    @include bk.wideScreen {
+      padding: 2rem 3rem;
+      width: calc(100% - 6rem);
+    }
     width: 1400px;
     margin: 0 auto;
+    &Active {
+      @include bk.mobile {
+        padding: 2rem 1.25rem;
+        width: calc(100% - 2.5rem);
+      }
+      @include bk.tablet {
+        padding: 2rem;
+        width: calc(100% - 4rem);
+      }
+      @include bk.desktop {
+        padding: 2rem;
+        width: calc(100% - 4rem);
+      }
+      @include bk.bigScreen {
+        padding: 2rem 3rem;
+        width: calc(100% - 6rem);
+      }
+      @include bk.wideScreen {
+        padding: 2rem 3rem;
+        width: calc(100% - 6rem);
+      }
+    }
     &Logo {
       font-size: 2.125rem;
       font-weight: bold;
@@ -130,15 +173,54 @@
     height: 0;
     border-top: 0.5px solid cl.$sectionBg;
     border-bottom: 0.5px solid cl.$sectionBg;
+    &Active {
+      @include bk.mobile {
+        margin-bottom: 1rem;
+      }
+      @include bk.tablet {
+        margin-bottom: 1rem;
+      }
+      @include bk.desktop {
+        margin-bottom: 1rem;
+      }
+      @include bk.bigScreen {
+        margin-bottom: 1rem;
+      }
+      @include bk.wideScreen {
+        margin-bottom: 1rem;
+      }
+    }
   }
 
   &-bttm {
     margin: 0 auto;
     width: 1400px;
-    padding: 10px 0px;
+    padding: 1.25rem 0;
     display: flex;
     justify-content: space-between;
     color: cl.$white;
     font-weight: 300;
+    &Active {
+      @include bk.mobile {
+        padding: 0rem 1.25rem;
+        width: calc(100% - 2.5rem);
+      }
+      @include bk.tablet {
+        padding: 0rem 2rem;
+        width: calc(100% - 4rem);
+      }
+      @include bk.desktop {
+        padding: 0rem 2rem;
+        width: calc(100% - 4rem);
+      }
+      @include bk.bigScreen {
+        padding: 0rem 3rem;
+        width: calc(100% - 6rem);
+      }
+      @include bk.wideScreen {
+        padding: 0rem 3rem;
+        width: calc(100% - 6rem);
+      }
+    }
   }
 }

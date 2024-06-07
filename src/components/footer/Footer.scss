@@ -15,60 +15,121 @@
 
   &-container {
     width: 1400px;
+    width: 100%;
+    @include bk.mobile {
+      padding: 0rem 1.25rem;
+      width: calc(100% - 2.5rem);
+    }
+    @include bk.tablet {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.desktop {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.bigScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+    }
+    @include bk.wideScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+    }
   }
   &__top {
     display: flex;
     justify-content: space-between;
+
     &Item {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      &__header {
-        font-size: 16px;
-        color: #555;
+      gap: 1.25rem;
+      @include bk.mobile {
+        &:nth-child(3) {
+          display: none;
+        }
+        &:nth-child(5) {
+          display: none;
+        }
       }
+
+      @include bk.tablet {
+        &:nth-child(5) {
+          display: none;
+        }
+      }
+
+      &__header {
+        font-size: 1rem;
+        color: cl.$darkGray;
+      }
+
       span {
         font-weight: 300;
+        cursor: pointer;
+        &:hover {
+          color: cl.$primaryCl;
+        }
       }
     }
   }
 
   hr {
-    margin: 50px 0px;
+    margin: 3rem 0;
     height: 0;
     border: 1px solid #ebe9e9;
   }
+
   &__bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     &-left {
-      width: max-content;
       display: flex;
       align-items: center;
-      gap: 20px;
 
       span {
-        font-size: 13px;
+        font-size: 0.8125rem;
         white-space: nowrap;
+
+        @include bk.mobile {
+          &:nth-child(2) {
+            display: none;
+          }
+        }
+
+        @include bk.tablet {
+          &:nth-child(2) {
+            display: none;
+          }
+        }
       }
     }
+
     &-right {
-      width: max-content;
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 1.875rem;
 
       &__social {
         display: flex;
-        gap: 20px;
+        gap: 1.25rem;
       }
 
       &__link {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 0.625rem;
+
+        @include bk.mobile {
+          display: none;
+        }
+
+        @include bk.tablet {
+          display: none;
+        }
       }
     }
   }

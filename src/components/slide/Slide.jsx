@@ -1,44 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Slide.scss";
 
-const Slide = ({ children }) => {
-  const [moveIndex, setMoveIndex] = useState(0);
-  const showPrev = () => {
-    if (moveIndex === 0) {
-      return;
-    }
-    setMoveIndex((prev) => prev + 10);
-  };
+const Slide = ({ children, slidesToShow = 5 }) => {
+  const [displayedCards, setDisplayedCards] = useState([]);
 
-  const showNext = () => {
-    if (moveIndex === -80) {
-      return;
-    } else {
-      setMoveIndex((prev) => prev - 10);
-    }
-  };
-  console.log(moveIndex);
+  useEffect(() => {
+    const selectedCards = children
+      .sort(() => 0.5 - Math.random())
+      .slice(0, slidesToShow);
+    setDisplayedCards(selectedCards);
+  }, [children, slidesToShow]);
+
   return (
     <div className="slideList">
       <div className="slideList-content">
-        <div
-          className="slideList-content__cards"
-          style={{ transform: `translateX(${moveIndex}%)` }}
-        >
-          {children}
+        <div className="slideList-content__cards">
+          {displayedCards.map((card, index) => (
+            <div key={index} className="slide-content__cardItems">
+              {card}
+            </div>
+          ))}
         </div>
-        <button
-          className="slideList-content__arrow slideList-content__prev"
-          onClick={showPrev}
-        >
-          &lt;
-        </button>
-        <button
-          className="slideList-content__arrow slideList-content__next"
-          onClick={showNext}
-        >
-          &gt;
-        </button>
       </div>
     </div>
   );

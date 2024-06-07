@@ -1,11 +1,15 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+
 .catCard {
-  width: 270px;
-  height: 345px;
   color: white;
   border-radius: 5px;
   position: relative;
   cursor: pointer;
-  padding: 0 18px 0 0;
+
+  // width: 16.875rem;
+  height: 21.5625rem;
 
   &__pic {
     width: 100%;

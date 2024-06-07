@@ -1,16 +1,31 @@
 @use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
 
 .partners {
-  background-color: #fafafa;
   height: 6.25rem;
   display: flex;
+  margin: auto;
   justify-content: center;
-
+  @include bk.mobile {
+    width: calc(100% - 2.5rem);
+  }
+  @include bk.tablet {
+    width: calc(100% - 4rem);
+  }
+  @include bk.desktop {
+    width: calc(100% - 4rem);
+  }
+  @include bk.bigScreen {
+    width: calc(100% - 6rem);
+  }
+  @include bk.wideScreen {
+    width: calc(100% - 6rem);
+  }
   &-content {
-    max-width: 760px;
+    width: auto;
     display: flex;
     align-items: center;
-    gap: 2.75rem;
     color: cl.$sectionBg;
     font-weight: 500;
 

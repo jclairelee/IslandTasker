@@ -59,11 +59,7 @@ function Service() {
           </p>
         </div>
         <div className="service__item">
-          <video
-            src="./img/video.mp4"
-            controls
-            className="service__item__video"
-          />
+          <img src="" alt="" />
         </div>
       </div>
     </div>

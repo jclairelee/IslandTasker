@@ -7,30 +7,32 @@ function ServiceDark() {
       <div className="serviceDark-container">
         <div className="serviceDark__item">
           <h1 className="serviceDark__header">
-            fiverr <i>business</i>
+            Island <i>Marketplace</i>
           </h1>
           <h1 className="serviceDark__header">
-            A business solution designed for teams
+            Your platform for buying and selling outdoor gear on the island
           </h1>
           <p className="serviceDark__text">
-            Upgrade to a curated experience packed with tools and benefits,
-            dedicated to businesses
+            Participate in our platform to support your community by selling
+            your items. Make your island life more convenient and active while
+            experiencing the benefits of local commerce.
           </p>
+
           <div className="serviceDark__title">
             <img src="./img/check.png" alt="" />
-            Connect to freelancers with proven business experience
+            Connect with local sellers offering outdoor gear and equipment
           </div>
 
           <div className="serviceDark__title">
             <img src="./img/check.png" alt="" />
-            Get matched with the perfect talent by a customer success manager
+            Find the perfect gear for your island adventures
           </div>
 
           <div className="serviceDark__title">
             <img src="./img/check.png" alt="" />
-            Manage teamwork and boost productivity with one powerful workspace
+            Support local businesses and boost the island's economy
           </div>
-          <button className="serviceDark__btn">Explore Liverr Business</button>
+          <button className="serviceDark__btn">Become a Seller</button>
         </div>
         <div className="serviceDark__item">
           <img

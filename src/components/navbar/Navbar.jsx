@@ -7,6 +7,7 @@ function Navbar() {
 
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const checkScroll = () => {
     window.scrollY > 0 ? setIsActive(true) : setIsActive(false);
@@ -14,21 +15,62 @@ function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", checkScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  useEffect(() => {
+    handleResize(); // Initial resizing
+  }, []);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
 
   const currentUser = {
     id: 1,
-    username: "Ce",
+    username: "Cathy",
     isSeller: true,
   };
 
   function getFirstChar(name) {
     return name.charAt(0);
   }
+  const shorterText = (text) => {
+    if (window.innerWidth < 1064) {
+      switch (text) {
+        case "Boats & RVs":
+          return "RVs";
+        case "Camping & Outdoor Gear":
+          return "Outdoor";
+        case "Health & Wellness":
+          return "Wellness";
+        case "Local Art":
+          return "Art";
+        case "Adventure Tours":
+          return "Travel";
+        case "Cycling & Biking":
+          return "Biking";
+        case "Sports":
+          return "Sports";
+        default:
+          return text;
+      }
+    } else {
+      return text;
+    }
+  };
 
   return (
-    <div className={isActive || pathname !== "/" ? "nav navActive" : "nav"}>
-      <div className="nav-top">
+    <div className={`nav ${isActive || pathname !== "/" ? "navActive" : ""}`}>
+      <div
+        className={`nav-top ${
+          isActive || pathname !== "/" ? "nav-topActive" : ""
+        }`}
+      >
         <div className="nav-topLogo">
           <Link
             to="/"
@@ -36,14 +78,11 @@ function Navbar() {
               isActive ? "nav-topLogo__linkActive" : "nav-topLogo__link"
             }
           >
-            <span className="nav-topLogo__text">Islands</span>
+            <span className="nav-topLogo__text">Island</span>
             <span className="nav-topLogo__dot">MarketPlace</span>
           </Link>
         </div>
         <div className="nav-topMenu">
-          <span className="nav-topMenu__text">Local Business</span>
-          <span className="nav-topMenu__text">Explore</span>
-          <span className="nav-topMenu__text">English</span>
           {!currentUser?.isSeller && (
             <span className="nav-topMenu__text">Become a Seller</span>
           )}
@@ -90,31 +129,39 @@ function Navbar() {
 
       {(isActive || pathname !== "/") && (
         <>
-          <hr className="nav-divider" />
-          <div className="nav-bttm">
+          <hr
+            className={`nav-divider ${
+              isActive || pathname !== "/" ? "nav-dividerActive" : ""
+            }`}
+          />
+          <div
+            className={`nav-bttm ${
+              isActive || pathname !== "/" ? "nav-bttmActive" : ""
+            }`}
+          >
             <Link className="nav-user__optionsLink" to="/">
-              Boats & RVs
+              {shorterText("Boats & RVs")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Camping & Outdoor Gear
+              {shorterText("Camping & Outdoor Gear")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Sports
+              {shorterText("Sports")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Health & Wellness
+              {shorterText("Health & Wellness")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Local Art
+              {shorterText("Local Art")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Adventure Tours
+              {shorterText("Adventure Tours")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Cycling & Biking
+              {shorterText("Cycling & Biking")}
             </Link>
             <Link className="nav-user__optionsLink" to="/">
-              Lifestyle
+              {shorterText("Lifestyle")}
             </Link>
           </div>
           <hr />
