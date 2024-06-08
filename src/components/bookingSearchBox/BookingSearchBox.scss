@@ -1,0 +1,112 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+@use "./src/styles/variables" as var;
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 2rem 4rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
+  border-radius: 1rem;
+  z-index: 999;
+  top: 34rem;
+  @include bk.tablet {
+    top: 36rem;
+  }
+  @include bk.desktop {
+    top: 37rem;
+  }
+
+  @include bk.bigScreen {
+    top: 44rem;
+  }
+
+  @include bk.wideScreen {
+    top: 47rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  &__input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    &-field {
+      padding: 12px;
+      margin-right: 10px;
+      border: 2px solid cl.$gray;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: cl.$accentCl;
+      }
+    }
+    &-datepicker {
+      padding: 12px;
+      margin-right: 10px;
+      border: 2px solid cl.$accentCl;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: cl.$accentCl;
+      }
+    }
+  }
+
+  &__button {
+    padding: 12px 24px;
+    background-color: cl.$accentCl;
+    color: #fff;
+    border: none;
+    border-radius: 25px; // Rounded
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #cba044;
+    }
+  }
+
+  &-categories {
+    &__txt {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    &__keyword {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #f0f0f0; // Light background
+      color: #333; // Darker text
+      border: none;
+      border-radius: 25px; // Rounded
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ddd; // Light hover color
+      }
+    }
+  }
+}

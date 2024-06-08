@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 import "./RightBox.scss";
+
 function RightBox() {
+  const [startDate, setStartDate] = useState(new Date());
+
+  const handleDateChange = (date) => {
+    setStartDate(date);
+  };
+
   return (
     <div className="right">
       <div className="right-price">
@@ -55,6 +65,15 @@ function RightBox() {
           <span>Additional design</span>
         </div>
       </div>
+      <DatePicker
+        wrapperClassName="datePicker"
+        selected={startDate}
+        onChange={handleDateChange}
+        showTimeSelect
+        dateFormat="Pp"
+        open // Set open to true to keep the date picker always open
+      />
+
       <button className="right-btn">Continue</button>
     </div>
   );

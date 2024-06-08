@@ -79,7 +79,7 @@ function Navbar() {
             }
           >
             <span className="nav-topLogo__text">Island</span>
-            <span className="nav-topLogo__dot">MarketPlace</span>
+            <span className="nav-topLogo__dot">Taskers</span>
           </Link>
         </div>
         <div className="nav-topMenu">

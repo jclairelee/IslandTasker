@@ -1,6 +1,7 @@
 @use "./src/styles/_color" as cl;
 @use "./src/styles/breakpoints" as bk;
 @use "./src/styles/global";
+@use "./src/styles/variables" as var;
 
 .featured {
   display: flex;
@@ -13,18 +14,22 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 32rem;
+  max-width: 1400px;
+  margin: auto;
+  height: var.$hero-mobile-h;
   @include bk.tablet {
-    height: 34rem;
+    height: var.$hero-tablet-h;
   }
   @include bk.desktop {
-    height: 35rem;
+    height: var.$hero-desktop-h;
   }
+
   @include bk.bigScreen {
-    height: 42rem;
+    height: var.$hero-big-screen-h;
   }
+
   @include bk.wideScreen {
-    height: 45rem;
+    height: var.$hero-wide-screen-h;
   }
 
   &::before,
@@ -53,14 +58,13 @@
     width: 100%;
     padding: 20px;
 
+    // Responsive padding adjustments
     @include bk.desktop {
       padding: 15px;
     }
-
     @include bk.tablet {
       padding: 10px;
     }
-
     @include bk.mobile {
       padding: 5px;
     }
@@ -78,7 +82,6 @@
       @include bk.desktop {
         font-size: 2.5rem;
       }
-
       @include bk.tablet {
         font-size: 2rem;
       }
@@ -98,6 +101,7 @@
       overflow: hidden;
 
       &-input {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -108,7 +112,11 @@
         margin: 10px;
       }
       &-textarea {
-        border: none;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 100%;
         outline: none;
 
         &::placeholder {
@@ -116,13 +124,18 @@
         }
       }
       &-btn {
-        width: 120px;
-        height: 50px;
-        border: none;
+        padding: 10px 20px;
         background-color: cl.$accentCl;
         color: cl.$white;
-        align-self: flex-end;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: darken(cl.$accentCl, 10%);
+        }
       }
     }
   }

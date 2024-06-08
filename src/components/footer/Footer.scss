@@ -6,8 +6,9 @@
   display: flex;
   justify-content: center;
   color: #666;
-  margin: 50px 0px;
-
+  padding: 50px 0px;
+  max-width: 1400px;
+  margin: auto;
   &__img {
     width: 24px;
     height: 24px;
