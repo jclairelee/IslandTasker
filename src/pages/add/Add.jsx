@@ -5,7 +5,7 @@ const Add = () => {
   return (
     <div className="add">
       <div className="add-container">
-        <h1>Add New Gig</h1>
+        <h1>Add New Task</h1>
         <div className="add__sections">
           <div className="add__sections__info">
             <label htmlFor="">Title</label>
@@ -15,10 +15,11 @@ const Add = () => {
             />
             <label htmlFor="">Category</label>
             <select name="cats" id="cats">
-              <option value="design">Design</option>
-              <option value="web">Web Development</option>
-              <option value="animation">Animation</option>
-              <option value="music">Music</option>
+              <option value="cleaning">Cleaning Task</option>
+              <option value="care">Care Task</option>
+              <option value="yardwork">Yard Work Task</option>
+              <option value="errands">Errands Task</option>
+              <option value="other">Other Assistance</option>
             </select>
             <label htmlFor="">Cover Image</label>
             <input type="file" />
@@ -50,10 +51,10 @@ const Add = () => {
             <label htmlFor="">Revision Number</label>
             <input type="number" />
             <label htmlFor="">Add Features</label>
-            <input type="text" placeholder="e.g. page design" />
-            <input type="text" placeholder="e.g. file uploading" />
-            <input type="text" placeholder="e.g. setting up a domain" />
-            <input type="text" placeholder="e.g. hosting" />
+            <input type="text" placeholder="e.g. Page design" />
+            <input type="text" placeholder="e.g. File uploading" />
+            <input type="text" placeholder="e.g. Setting up a domain" />
+            <input type="text" placeholder="e.g. Hosting" />
             <label htmlFor="">Price</label>
             <input type="number" />
           </div>

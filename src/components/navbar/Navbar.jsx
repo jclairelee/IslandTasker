@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
+import { cards } from "../../../temporaryData";
 
 function Navbar() {
   const { pathname } = useLocation();
@@ -23,7 +24,7 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    handleResize(); // Initial resizing
+    handleResize();
   }, []);
 
   const handleResize = () => {
@@ -39,23 +40,24 @@ function Navbar() {
   function getFirstChar(name) {
     return name.charAt(0);
   }
+
   const shorterText = (text) => {
     if (window.innerWidth < 1064) {
       switch (text) {
-        case "Boats & RVs":
-          return "RVs";
-        case "Camping & Outdoor Gear":
-          return "Outdoor";
-        case "Health & Wellness":
-          return "Wellness";
-        case "Local Art":
-          return "Art";
-        case "Adventure Tours":
-          return "Travel";
-        case "Cycling & Biking":
-          return "Biking";
-        case "Sports":
-          return "Sports";
+        case "Home Service":
+          return "Home";
+        case "Cleaning Service":
+          return "Cleaning";
+        case "Event/Party Service":
+          return "Event";
+        case "Pet Care Service":
+          return "Pet";
+        case "Yard Work Service":
+          return "Yard Work";
+        case "Other Service":
+          return "Other";
+        case "Child Care Service":
+          return "Child Care";
         default:
           return text;
       }
@@ -63,6 +65,18 @@ function Navbar() {
       return text;
     }
   };
+
+  const linkPaths = [
+    "/home",
+    "/cleaning",
+    "/event",
+    "/pet",
+    "/yardwork",
+    "/other",
+    "/childcare",
+  ];
+
+  console.log(cards[0]);
 
   return (
     <div className={`nav ${isActive || pathname !== "/" ? "navActive" : ""}`}>
@@ -78,13 +92,19 @@ function Navbar() {
               isActive ? "nav-topLogo__linkActive" : "nav-topLogo__link"
             }
           >
-            <span className="nav-topLogo__text">Island</span>
+            <span
+              className={
+                isActive ? "nav-topLogo__textActive" : "nav-topLogo__text"
+              }
+            >
+              Island
+            </span>
             <span className="nav-topLogo__dot">Taskers</span>
           </Link>
         </div>
         <div className="nav-topMenu">
           {!currentUser?.isSeller && (
-            <span className="nav-topMenu__text">Become a Seller</span>
+            <span className="nav-topMenu__text">Become a Tasker</span>
           )}
           {currentUser ? (
             <div className="nav-user" onClick={() => setIsOpen(!isOpen)}>
@@ -96,11 +116,11 @@ function Navbar() {
                 <div className="nav-user__options">
                   {currentUser.isSeller && (
                     <>
-                      <Link className="nav-user__optionsLink" to="/mygigs">
-                        Gigs
+                      <Link className="nav-user__optionsLink" to="/mytasks">
+                        Tasks
                       </Link>
                       <Link className="nav-user__optionsLink" to="/add">
-                        Add New Gig
+                        Add New Task
                       </Link>
                     </>
                   )}
@@ -139,30 +159,15 @@ function Navbar() {
               isActive || pathname !== "/" ? "nav-bttmActive" : ""
             }`}
           >
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Boats & RVs")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Camping & Outdoor Gear")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Sports")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Health & Wellness")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Local Art")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Adventure Tours")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Cycling & Biking")}
-            </Link>
-            <Link className="nav-user__optionsLink" to="/">
-              {shorterText("Lifestyle")}
-            </Link>
+            {cards.map((cat, index) => (
+              <Link
+                className="nav-user__optionsLink"
+                to={linkPaths[index]}
+                key={index}
+              >
+                {shorterText(cat.title)}
+              </Link>
+            ))}
           </div>
           <hr />
         </>

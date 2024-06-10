@@ -3,16 +3,18 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Home from "./pages/home/Home";
-import Gigs from "./pages/gigs/Gigs";
-import Gig from "./pages/gig/Gig";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Add from "./pages/add/Add";
 import Orders from "./pages/orders/Orders";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/singleMsg/SingleMsg";
-import MyGigs from "./pages/myGigs/MyGigs";
-
+// myGigs => myTasks
+// Gigs => Taskers
+// Gig =? Task
+import MyTasks from "./pages/myTasks/MyTasks.jsx";
+import Taskers from "./pages/taskers/Taskers.jsx";
+import Task from "./pages/task/Task.jsx";
 function App() {
   const Layout = () => {
     return (
@@ -34,12 +36,12 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/gigs",
-          element: <Gigs />,
+          path: "/taskers",
+          element: <Taskers />,
         },
         {
-          path: "/myGigs",
-          element: <MyGigs />,
+          path: "/mytasks",
+          element: <MyTasks />,
         },
         {
           path: "/orders",
@@ -58,8 +60,8 @@ function App() {
           element: <Add />,
         },
         {
-          path: "/gig/:id",
-          element: <Gig />,
+          path: "/task/:id",
+          element: <Task />,
         },
       ],
     },

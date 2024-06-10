@@ -4,11 +4,9 @@ import Featured from "../../components/featured/Featured";
 import Partners from "../../components/partners/Partners";
 import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
-import { cards, projects } from "../../../temporaryData";
-import Service from "../../components/service/Service";
+import { cards, projects, taskers } from "../../../temporaryData";
 import ServiceDark from "../../components/serviceDark/ServiceDark";
-import ProjectCard from "../../components/projectCard/ProjectCard";
-import Products from "../../components/products/Products";
+import Card from "../../components/card/Card";
 import BookingSearchBox from "../../components/bookingSearchBox/BookingSearchBox";
 
 function Home() {
@@ -22,11 +20,7 @@ function Home() {
         ))}
       </Slide>
       <Partners />
-      <Products>
-        {projects.map((card) => (
-          <ProjectCard key={card.id} card={card} />
-        ))}
-      </Products>
+      <Card taskers={taskers} />
       <ServiceDark />
       <BookingSearchBox />
     </div>

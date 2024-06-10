@@ -64,6 +64,7 @@
       gap: 10px;
       font-weight: 300;
       color: cl.$text;
+      width: 100%;
       &Link,
       &Link:visited {
         color: cl.$white;
@@ -137,8 +138,11 @@
           }
         }
       }
-      // &__text {
-      // }
+      &__text {
+        &Active {
+          color: cl.$white;
+        }
+      }
       &__dot {
         font-weight: bold;
         color: cl.$accentCl;

@@ -1,0 +1,57 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+@use "./src/styles/variables" as var;
+
+.taskers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &-container {
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 1400px;
+    width: 100%;
+    @include bk.mobile {
+      padding: 0rem 1.25rem;
+      width: calc(100% - 2.5rem);
+    }
+    @include bk.tablet {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.desktop {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+    }
+    @include bk.bigScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+    }
+    @include bk.wideScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+    }
+  }
+
+  &__pageTitle {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #555;
+  }
+
+  &__text {
+    color: #999;
+    font-weight: 300;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import "./AboutGigSeller.scss";
+import "./AboutTaskSeller.scss";
 
-function AboutGigSeller() {
+function AboutTaskSeller() {
   return (
     <>
       <div className="seller">
@@ -12,7 +12,7 @@ function AboutGigSeller() {
             alt=""
           />
           <div className="seller__userinfo">
-            <span>Anna Bell</span>
+            <span>Anna Jane</span>
             <div className="seller__userinfo__stars">
               <img src="/img/star.png" alt="" />
               <img src="/img/star.png" alt="" />
@@ -21,25 +21,27 @@ function AboutGigSeller() {
               <img src="/img/star.png" alt="" />
               <span>5</span>
             </div>
-            <button>Contact Me</button>
+            <button>Schedule with Me</button>
           </div>
         </div>
         <div className="seller__box">
           <div className="seller__boxContainer">
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">From</span>
-              <span className="seller__boxItem__desc">USA</span>
+              <span className="seller__boxItem__desc">LadySmith</span>
             </div>
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">Member since</span>
-              <span className="seller__boxItem__desc">Aug 2022</span>
+              <span className="seller__boxItem__desc">Aug 2023</span>
             </div>
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">Avg. response time</span>
               <span className="seller__boxItem__desc">4 hours</span>
             </div>
             <div className="seller__boxItem">
-              <span className="seller__boxItem__title">Last delivery</span>
+              <span className="seller__boxItem__title">
+                Last Task Completed
+              </span>
               <span className="seller__boxItem__desc">1 day</span>
             </div>
             <div className="seller__boxItem">
@@ -49,14 +51,20 @@ function AboutGigSeller() {
           </div>
           <hr />
           <p>
-            My name is Anna, I enjoy creating AI generated art in my spare time.
-            I have a lot of experience using the AI program and that means I
-            know what to prompt the AI with to get a great and incredibly
-            detailed result.
+            I am a certified babysitter with extensive training and hands-on
+            experience in caring for children of all ages. My certification
+            ensures that I am equipped with the necessary skills and knowledge
+            to create a safe, nurturing, and engaging environment for children
+            under my supervision. I have undergone specialized training in child
+            development, safety protocols, and emergency procedures, allowing me
+            to respond effectively to any situation that may arise. My passion
+            for working with children drives me to provide the highest level of
+            care, ensuring that each child feels valued, supported, and happy
+            under my care.
           </p>
         </div>
       </div>
     </>
   );
 }
-export default AboutGigSeller;
+export default AboutTaskSeller;

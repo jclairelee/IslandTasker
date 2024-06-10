@@ -1,12 +1,12 @@
 import React from "react";
-import "./Gig.scss";
+import "./Task.scss";
 import Left from "../../components/left/Left";
 import Right from "../../components/right/RightBox";
 
-function Gig() {
+function Task() {
   return (
-    <div className="gig">
-      <div className="gig-container">
+    <div className="task">
+      <div className="task-container">
         <Left />
       </div>
       <Right />
@@ -14,4 +14,4 @@ function Gig() {
   );
 }
 
-export default Gig;
+export default Task;

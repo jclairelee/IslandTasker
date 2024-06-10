@@ -17,6 +17,7 @@ function PageCard({ item }) {
             <img src="./img/star.png" alt="" className="pageCard-star__img" />
             <span className="pageCard-star__num">{item.star}</span>
           </div>
+          ``
         </div>
         <hr />
         <div className="pageCard-price">

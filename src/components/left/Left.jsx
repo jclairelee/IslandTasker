@@ -1,14 +1,14 @@
 import React from "react";
 import "./Left.scss";
-import AboutGigSeller from "../aboutGigSeller/AboutGigSeller";
+import AboutTaskSeller from "../aboutTaskSeller/AboutTaskSeller";
 import Reviews from "../reviews/Reviews";
 function Left() {
   return (
     <div className="left">
       <span className="left__breadcrumbs">
-        Liverr {">"} Graphics & Design {">"}
+        Island Taskers {">"} Home Service {">"}
       </span>
-      <h1>I will create ai generated art for you</h1>
+      <h1>Let Me Help Keep Your Home Running Smoothly</h1>
       <div className="left__user">
         <img
           className="pp"
@@ -39,22 +39,16 @@ function Left() {
           alt=""
         />
       </Slider> */}
-      <h2>About This Gig</h2>
+      <h2>About This Tasker</h2>
       <p>
-        I use an AI program to create images based on text prompts. This means I
-        can help you to create a vision you have through a textual description
-        of your scene without requiring any reference images. Some things I've
-        found it often excels at are: Character portraits (E.g. a picture to go
-        with your DnD character) Landscapes (E.g. wallpapers, illustrations to
-        compliment a story) Logos (E.g. Esports team, business, profile picture)
-        You can be as vague or as descriptive as you want. Being more vague will
-        allow the AI to be more creative which can sometimes result in some
-        amazing images. You can also be incredibly precise if you have a clear
-        image of what you want in mind. All of the images I create are original
-        and will be found nowhere else. If you have any questions you're more
-        than welcome to send me a message.
+        I offer home maintenance services that cater to your needs, which could
+        be something like fixing a leaky faucet, painting a room, or tackling a
+        larger project. It doesn't matter what you are facing to. I've got you
+        covered. Let me take care of the upkeep so you can enjoy a
+        well-maintained home hassle-free. If you have any questions or specific
+        requests, feel free to reach out. Your satisfaction is my priority.
       </p>
-      <AboutGigSeller />
+      <AboutTaskSeller />
       <Reviews />
     </div>
   );

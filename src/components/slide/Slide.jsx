@@ -1,8 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./Slide.scss";
 
-const Slide = ({ children, slidesToShow = 5 }) => {
+const Slide = ({ children }) => {
+  const [slidesToShow, setSlidesToShow] = useState(5);
   const [displayedCards, setDisplayedCards] = useState([]);
+
+  useEffect(() => {
+    const updateSlidesToShow = () => {
+      const screenWidth = window.innerWidth;
+      let newSlidesToShow = 4;
+
+      if (screenWidth <= 768 && screenWidth >= 560) {
+        newSlidesToShow = 2;
+      } else if (screenWidth < 560) {
+        newSlidesToShow = 1;
+      }
+
+      setSlidesToShow(newSlidesToShow);
+    };
+
+    updateSlidesToShow();
+
+    window.addEventListener("resize", updateSlidesToShow);
+    return () => window.removeEventListener("resize", updateSlidesToShow);
+  }, []);
 
   useEffect(() => {
     const selectedCards = children
