@@ -96,16 +96,16 @@
     &__keyword {
       padding: 10px 20px;
       margin: 5px;
-      background-color: #f0f0f0; // Light background
-      color: #333; // Darker text
+      background-color: #f0f0f0;
+      color: #333;
       border: none;
-      border-radius: 25px; // Rounded
+      border-radius: 25px;
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #ddd; // Light hover color
+        background-color: #ddd;
       }
     }
   }

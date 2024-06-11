@@ -1,6 +1,7 @@
 @use "./src/styles/_color" as cl;
 @use "./src/styles/breakpoints" as bk;
 @use "./src/styles/global";
+@use "./src/styles/variables" as var;
 
 .nav {
   display: flex;
@@ -47,6 +48,21 @@
       align-items: center;
       font-weight: bold;
       background-color: cl.$accentCl;
+      &Active {
+        color: white;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        background-color: cl.$accentCl;
+      }
+      &NotHome {
+        color: white;
+      }
     }
     // &__name {
     // }
@@ -64,7 +80,7 @@
       gap: 10px;
       font-weight: 300;
       color: cl.$text;
-      width: 100%;
+      width: 150%;
       &Link,
       &Link:visited {
         color: cl.$white;
@@ -140,6 +156,9 @@
       }
       &__text {
         &Active {
+          color: cl.$white;
+        }
+        &NotHome {
           color: cl.$white;
         }
       }

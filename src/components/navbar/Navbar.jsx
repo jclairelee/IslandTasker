@@ -5,31 +5,18 @@ import { cards } from "../../../temporaryData";
 
 function Navbar() {
   const { pathname } = useLocation();
-
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const checkScroll = () => {
-    window.scrollY > 0 ? setIsActive(true) : setIsActive(false);
-  };
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
-    window.addEventListener("scroll", checkScroll);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("scroll", checkScroll);
-      window.removeEventListener("resize", handleResize);
+    const handleScroll = () => {
+      setIsActive(window.scrollY > 0);
     };
-  }, []);
 
-  useEffect(() => {
-    handleResize();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
 
   const currentUser = {
     id: 1,
@@ -37,33 +24,8 @@ function Navbar() {
     isSeller: true,
   };
 
-  function getFirstChar(name) {
-    return name.charAt(0);
-  }
-
   const shorterText = (text) => {
-    if (window.innerWidth < 1064) {
-      switch (text) {
-        case "Home Service":
-          return "Home";
-        case "Cleaning Service":
-          return "Cleaning";
-        case "Event/Party Service":
-          return "Event";
-        case "Pet Care Service":
-          return "Pet";
-        case "Yard Work Service":
-          return "Yard Work";
-        case "Other Service":
-          return "Other";
-        case "Child Care Service":
-          return "Child Care";
-        default:
-          return text;
-      }
-    } else {
-      return text;
-    }
+    return window.innerWidth < 1064 ? text.replace(" Service", "") : text;
   };
 
   const linkPaths = [
@@ -76,26 +38,22 @@ function Navbar() {
     "/childcare",
   ];
 
-  console.log(cards[0]);
-
   return (
-    <div className={`nav ${isActive || pathname !== "/" ? "navActive" : ""}`}>
+    <div className={`nav ${isActive || !isHomePage ? "navActive" : ""}`}>
       <div
-        className={`nav-top ${
-          isActive || pathname !== "/" ? "nav-topActive" : ""
-        }`}
+        className={`nav-top ${isActive || !isHomePage ? "nav-topActive" : ""}`}
       >
         <div className="nav-topLogo">
           <Link
             to="/"
-            className={
-              isActive ? "nav-topLogo__linkActive" : "nav-topLogo__link"
-            }
+            className={`nav-topLogo__link ${
+              isActive ? "nav-topLogo__linkActive" : ""
+            }`}
           >
             <span
-              className={
-                isActive ? "nav-topLogo__textActive" : "nav-topLogo__text"
-              }
+              className={`nav-topLogo__text ${
+                !isHomePage ? "nav-topLogo__textNotHome" : ""
+              }`}
             >
               Island
             </span>
@@ -108,15 +66,20 @@ function Navbar() {
           )}
           {currentUser ? (
             <div className="nav-user" onClick={() => setIsOpen(!isOpen)}>
-              <div className="nav-user__initial">
-                {getFirstChar(currentUser?.username)}
+              <div
+                className={`nav-user__initial ${
+                  isActive ? "nav-user__initialActive" : ""
+                } ${isHomePage ? "" : "nav-user__initialNotHome"}`}
+              >
+                {currentUser.username.charAt(0)}
               </div>
-              <span>{currentUser?.username}</span>
+
+              <span>{currentUser.username}</span>
               {isOpen && (
                 <div className="nav-user__options">
                   {currentUser.isSeller && (
                     <>
-                      <Link className="nav-user__optionsLink" to="/mytasks">
+                      <Link className="nav-user__optionsLink" to="/mysale">
                         Tasks
                       </Link>
                       <Link className="nav-user__optionsLink" to="/add">
@@ -124,7 +87,7 @@ function Navbar() {
                       </Link>
                     </>
                   )}
-                  <Link className="nav-user__optionsLink" to="/orders">
+                  <Link className="nav-user__optionsLink" to="/mypurchase">
                     Orders
                   </Link>
                   <Link className="nav-user__optionsLink" to="/messages">
@@ -147,16 +110,16 @@ function Navbar() {
         </div>
       </div>
 
-      {(isActive || pathname !== "/") && (
+      {(isActive || !isHomePage) && (
         <>
           <hr
             className={`nav-divider ${
-              isActive || pathname !== "/" ? "nav-dividerActive" : ""
+              isActive || !isHomePage ? "nav-dividerActive" : ""
             }`}
           />
           <div
             className={`nav-bttm ${
-              isActive || pathname !== "/" ? "nav-bttmActive" : ""
+              isActive || !isHomePage ? "nav-bttmActive" : ""
             }`}
           >
             {cards.map((cat, index) => (
@@ -165,7 +128,9 @@ function Navbar() {
                 to={linkPaths[index]}
                 key={index}
               >
-                {shorterText(cat.title)}
+                {window.innerWidth < 1064
+                  ? cat.title.replace(" Service", "")
+                  : cat.title}
               </Link>
             ))}
           </div>

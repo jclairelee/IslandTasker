@@ -1,18 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Messages.scss";
+import { messages, message } from "../../../temporaryData";
 
 const Messages = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const currentUser = {
     id: 1,
     username: "Anna",
     isSeller: true,
   };
 
-  const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-  maxime cum corporis esse aspernatur laborum dolorum? Animi
-  molestias aliquam, cum nesciunt, aut, ut quam vitae saepe repellat
-  nobis praesentium placeat.`;
+  const shortenMessage = (msg) => {
+    if (windowWidth < 690) {
+      return msg.substring(0, 30) + "...";
+    } else if (windowWidth < 400) {
+      return msg.substring(0, 10) + "...";
+    } else {
+      return msg;
+    }
+  };
 
   return (
     <div className="messages">
@@ -21,60 +41,28 @@ const Messages = () => {
           <h1>Messages</h1>
         </div>
         <table>
-          <tr>
-            <th>{currentUser.isSeller ? "Seeker" : "Tasker"}</th>
-            <th>Last Message</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-          <tr className="active">
-            <td>Charley Sharp</td>
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>1 hour ago</td>
-            <td>
-              <button>Mark as Read</button>
-            </td>
-          </tr>
-          <tr className="active">
-            <td>John Doe</td>
-
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>2 hours ago</td>
-            <td>
-              <button>Mark as Read</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Elinor Good</td>
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>1 day ago</td>
-          </tr>
-          <tr>
-            <td>Garner David </td>
-            <td>
-              <Link to="/message/123" className="link">
-                {message.substring(0, 100)}...
-              </Link>
-            </td>
-            <td>2 days ago</td>
-          </tr>
-          <tr>
-            <td>Troy Oliver</td>
-            <td>{message.substring(0, 100)}</td>
-            <td>1 week ago</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>{currentUser.isSeller ? "Seeker" : "Tasker"}</th>
+              <th>Last Message</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+            {messages.map((msg) => (
+              <tr key={msg.id} className="active">
+                <td>{msg.sender}</td>
+                <td>
+                  <Link to={`/message/${msg.id}`} className="link">
+                    {shortenMessage(message)}
+                  </Link>
+                </td>
+                <td>{msg.date}</td>
+                <td>
+                  <button>Mark as Read</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

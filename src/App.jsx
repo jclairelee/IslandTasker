@@ -6,13 +6,10 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Add from "./pages/add/Add";
-import Orders from "./pages/orders/Orders";
+import MySale from "./pages/mySale/MySale";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/singleMsg/SingleMsg";
-// myGigs => myTasks
-// Gigs => Taskers
-// Gig =? Task
-import MyTasks from "./pages/myTasks/MyTasks.jsx";
+import MyPurchase from "./pages/myPurchase/MyPurchase.jsx";
 import Taskers from "./pages/taskers/Taskers.jsx";
 import Task from "./pages/task/Task.jsx";
 function App() {
@@ -40,12 +37,12 @@ function App() {
           element: <Taskers />,
         },
         {
-          path: "/mytasks",
-          element: <MyTasks />,
+          path: "/mySale",
+          element: <MySale />,
         },
         {
-          path: "/orders",
-          element: <Orders />,
+          path: "/myPurchase",
+          element: <MyPurchase />,
         },
         {
           path: "/messages",

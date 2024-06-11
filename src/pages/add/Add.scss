@@ -2,10 +2,11 @@
 @use "./src/styles/_breakpoints" as bk;
 @use "./src/styles/_global";
 @use "./src/styles/_variables";
+
 .add {
   display: flex;
   justify-content: center;
-
+  margin: auto;
   &-container {
     padding: 50px 0px;
     max-width: 1400px;
@@ -32,65 +33,76 @@
     }
 
     h1 {
-      width: max-content;
+      width: 100%;
       margin-bottom: 30px;
       color: gray;
       font-weight: 300;
     }
   }
+
   &__sections {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 100px;
+    gap: 20px;
+    @include bk.mobile {
+      flex-direction: column-reverse;
+    }
 
+    &__infoContent {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
     label {
       color: gray;
       font-size: 18px;
+      margin-bottom: 5px;
     }
 
     &__info,
     &__details {
       flex: 1;
+      min-width: 300px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      justify-content: space-between;
+      gap: 2rem;
 
       input,
       select,
       textarea {
-        padding: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       button {
         border: none;
-        padding: 20px;
+        padding: 10px 20px;
         color: white;
         font-weight: 500;
-        font-size: 18px;
-        background-color: #1dbf73;
+        font-size: 16px;
+        background-color: cl.$accentCl;
         cursor: pointer;
+        width: 100%;
+        &:hover {
+          background-color: cl.$primaryCl;
+        }
       }
     }
   }
 }
 
-select {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  cursor: pointer;
-}
-
-/* Style when select is focused */
 select:focus {
   outline: none;
-  border-color: #1dbf73; /* Example color for focus */
+  border-color: #1dbf73;
 }
 
-/* Style when select is hovered */
 select:hover {
-  border-color: #555; /* Example color for hover */
+  border-color: #555;
 }

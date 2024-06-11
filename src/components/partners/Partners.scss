@@ -1,6 +1,7 @@
 @use "./src/styles/_color" as cl;
-@use "./src/styles/breakpoints" as bk;
-@use "./src/styles/global";
+@use "./src/styles/_breakpoints" as bk;
+@use "./src/styles/_global";
+@use "./src/styles/_variables";
 
 .partners {
   height: 6.25rem;
@@ -9,18 +10,23 @@
   justify-content: center;
   @include bk.mobile {
     width: calc(100% - 2.5rem);
+    padding-top: 1rem;
   }
   @include bk.tablet {
     width: calc(100% - 4rem);
+    padding-top: 1.5rem;
   }
   @include bk.desktop {
     width: calc(100% - 4rem);
+    padding-top: 2rem;
   }
   @include bk.bigScreen {
     width: calc(100% - 6rem);
+    padding-top: 2.5rem;
   }
   @include bk.wideScreen {
     width: calc(100% - 6rem);
+    padding-top: 3rem;
   }
   &-content {
     width: auto;
@@ -28,10 +34,23 @@
     align-items: center;
     color: cl.$sectionBg;
     font-weight: 500;
+    height: 4rem;
+    // overflow: hidden;
 
     &__logo {
       height: 4rem;
       object-fit: contain;
+      transition: transform 0.3s ease;
+      animation: slideLeft 10s linear;
     }
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-130%);
   }
 }

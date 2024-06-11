@@ -7,12 +7,18 @@
   justify-content: center;
   width: 100%;
   margin: auto;
+  min-width: 490px;
 
   &-content {
     display: flex;
     overflow: hidden;
     position: relative;
     max-width: 1400px;
+    width: 100%;
+    padding: 0rem 2rem;
+    width: calc(100% - 4rem);
+    max-width: 1400px;
+    margin: auto;
     width: 100%;
     @include bk.mobile {
       padding: 0rem 1.25rem;

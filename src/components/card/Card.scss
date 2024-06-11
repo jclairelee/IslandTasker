@@ -8,19 +8,60 @@
   color: inherit;
   border: 1px solid #ccc;
   border-radius: 16px;
-  margin-bottom: 20px;
-
+  min-width: 490px;
   display: flex;
   align-items: center;
+  overflow: hidden;
+
   &-wrapper {
     padding: 0rem 2rem;
     width: calc(100% - 4rem);
+    max-width: 1400px;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include bk.mobile {
+      padding: 0rem 1.25rem;
+      width: calc(100% - 2.5rem);
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    @include bk.tablet {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+    }
+    @include bk.desktop {
+      padding: 0rem 2rem;
+      width: calc(100% - 4rem);
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+    @include bk.bigScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+    @include bk.wideScreen {
+      padding: 0rem 3rem;
+      width: calc(100% - 6rem);
+      gap: 3rem;
+      padding: 3rem 0;
+    }
   }
-  &-pic {
+
+  &:nth-child(even) {
+    background-color: cl.$lighterBg;
+    flex-direction: row-reverse;
+  }
+
+  .card-pic {
     height: 22rem;
-
     overflow: hidden;
-
+    width: 60%;
     .card-pic__img {
       width: 100%;
       height: 100%;
@@ -28,54 +69,108 @@
     }
   }
 
-  &-data {
+  .card-data {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    width: 40%;
+    @include bk.tablet {
+      padding: 0 1.5rem;
+    }
+    @include bk.desktop {
+      padding: 0 2rem;
+    }
+    @include bk.bigScreen {
+      padding: 0 2.5rem;
+    }
+    @include bk.wideScreen {
+      padding: 0 3rem;
+    }
+    &__odd {
+      display: flex;
+      align-items: end;
+    }
+
+    &__header {
+      font-size: 1.6rem;
+    }
     &__upper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      &__header {
-        font-size: 1.6rem;
-      }
 
       &__price {
         font-weight: bold;
-        color: #007bff;
+        color: cl.$buttons;
         gap: 1px;
       }
     }
     &__middle {
-      &__desc {
-        font-size: 14px;
-        padding-right: 1rem;
-        gap: 1px;
+      font-size: 0.75rem;
+      line-height: 1.5rem;
+      &__odd {
+        text-align: end;
+      }
+
+      @include bk.mobile {
+        font-size: 0.75rem;
         line-height: 1.5rem;
+      }
+      @include bk.tablet {
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+      }
+      @include bk.desktop {
+        font-size: 1.15rem;
+        line-height: 1.85rem;
+      }
+      @include bk.bigScreen {
+        font-size: 1.25rem;
+        line-height: 2rem;
+      }
+      @include bk.wideScreen {
+        font-size: 1.25rem;
+        line-height: 2rem;
       }
     }
     &__bottom {
-      &__txt {
-        font-size: 14px;
-        padding-right: 1rem;
-        gap: 1px;
-        line-height: 1.5rem;
-        color: #007bff;
+      font-size: 12px;
+      padding-right: 1rem;
+      line-height: 1.5rem;
+      border-radius: 20px;
+      display: flex;
+      gap: 1rem;
+      margin: auto;
+      width: 100%;
+
+      &__odd {
+        display: flex;
+        justify-content: end;
+      }
+
+      &__item {
+        border: 1px solid cl.$buttons;
+        padding: 0 10px;
+        color: cl.$buttons;
+        border-radius: 1rem;
       }
     }
   }
   &__btn {
     padding: 8px 16px;
     border: none;
-    width: 15rem;
+    width: 100%;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: cl.$accentCl;
     color: #fff;
     font-size: 14px;
+    margin: 0.89rem 0;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: cl.$primaryCl;
     }
   }
 }

@@ -238,3 +238,148 @@ export const tasksList = [
     sales: 16,
   },
 ];
+export const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+  maxime cum corporis esse aspernatur laborum dolorum? Animi
+  molestias aliquam, cum nesciunt, aut, ut quam vitae saepe repellat
+  nobis praesentium placeat.`;
+
+export const messages = [
+  {
+    id: 1,
+    sender: "Charley Sharp",
+    date: "1 hour ago",
+  },
+  {
+    id: 2,
+    sender: "John Doe",
+    date: "2 hours ago",
+  },
+  {
+    id: 3,
+    sender: "Elinor Good",
+    date: "1 day ago",
+  },
+  {
+    id: 4,
+    sender: "Garner David",
+    date: "2 days ago",
+  },
+  {
+    id: 5,
+    sender: "Troy Oliver",
+    date: "1 week ago",
+  },
+];
+export const orders = [
+  {
+    id: 1,
+    service: "Stunning concept art",
+    hours: "3",
+    price: "59.99",
+    seeker: "Maria Anders",
+  },
+  {
+    id: 2,
+    service: "Ai generated concept art",
+    price: "79.99",
+    hours: "3",
+    seeker: "Francisco Chang",
+  },
+  {
+    id: 3,
+    service: "High quality digital character",
+    price: "110.99",
+    hours: "3",
+    seeker: "Roland Men",
+  },
+  {
+    id: 4,
+    service: "Illustration hyper realistic painting",
+    price: "39.99",
+    hours: "3",
+    seeker: "Helen Bennett",
+  },
+  {
+    id: 5,
+    service: "Original ai generated digital art",
+    price: "119.99",
+    hours: "3",
+    seeker: "Yoshi Tannamuri",
+  },
+  {
+    id: 6,
+    service: "Text based ai generated art",
+    price: "49.99",
+    hours: "3",
+    seeker: "Giovanni Rovelli",
+  },
+];
+// Add page data
+export const sectionsInfoFields = [
+  {
+    label: "Title",
+    type: "text",
+    placeholder: "Enter a catchy title for your service",
+  },
+  {
+    label: "Category",
+    type: "select",
+    options: [
+      "Cleaning Task",
+      "Care Task",
+      "Yard Work Task",
+      "Errands Task",
+      "Other Assistance",
+    ],
+    placeholder: "Select the category of your service",
+  },
+  { label: "Cover Image", type: "file", placeholder: "Upload a cover image" },
+  {
+    label: "Upload Images",
+    type: "file",
+    multiple: true,
+    placeholder: "Upload additional images",
+  },
+  {
+    label: "Description",
+    type: "textarea",
+    placeholder: "Briefly describe your service to customers",
+    rows: 16,
+  },
+];
+
+export const sectionsDetailsFields = [
+  {
+    label: "Service Title",
+    type: "text",
+    placeholder: "Enter a descriptive title for your service",
+  },
+  {
+    label: "Short Description",
+    type: "textarea",
+    placeholder: "Provide a concise summary of your service",
+    rows: 10,
+  },
+  {
+    label: "Minimum Hours Required",
+    type: "number",
+    placeholder: "Specify the minimum hours required",
+  },
+  {
+    label: "Hourly Price",
+    type: "text",
+    placeholder: "Enter the hourly price for your service",
+  },
+  {
+    label: "Package Discount Available",
+    type: "select",
+    options: ["Yes", "No"],
+    placeholder: "Enter the number of package options available",
+  },
+  {
+    label: "Notes",
+    type: "text",
+    placeholder:
+      "Specify any additional options or features (e.g., Non-toxic cleaning products)",
+  },
+];

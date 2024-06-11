@@ -1,22 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./MyTasks.scss";
+import "./MySale.scss";
 import { tasksList } from "../../../temporaryData";
-function MyTasks() {
+function MySale() {
   const currentUser = {
     id: 1,
     username: "Anna",
-    isSeller: false,
+    isTasker: false,
   };
 
   return (
-    <div className="myTasks">
-      <div className="myTasks-container">
-        <div className="myTasks__title">
-          <h1>{currentUser.isSeller ? "Taskers" : "Orders"}</h1>
+    <div className="mySale">
+      <div className="mySale-container">
+        <div className="mySale__title">
+          <h1>My Bookings</h1>
           {currentUser.isSeller && (
             <Link to="/add">
-              <button className="myTasks__btn">Add New Offer</button>
+              <button className="mySale__btn">Add New Offer</button>
             </Link>
           )}
         </div>
@@ -51,4 +51,4 @@ function MyTasks() {
   );
 }
 
-export default MyTasks;
+export default MySale;
