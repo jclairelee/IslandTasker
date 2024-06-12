@@ -18,6 +18,9 @@
   z-index: 999;
   top: 34rem;
   max-width: 95%;
+  @include bk.mobile {
+    padding: 1.5rem;
+  }
   @include bk.tablet {
     top: 36rem;
   }
@@ -109,6 +112,10 @@
       font-size: 18px;
       font-weight: bold;
       color: #333;
+      @include bk.mobile {
+        padding: 0.5rem;
+        font-size: 0.65rem;
+      }
     }
     &__keyword {
       padding: 10px 20px;
@@ -120,7 +127,10 @@
       font-size: 14px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-
+      @include bk.mobile {
+        padding: 0.5rem;
+        font-size: 0.65rem;
+      }
       &:hover {
         background-color: #ddd;
       }

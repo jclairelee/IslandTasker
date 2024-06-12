@@ -2,72 +2,31 @@
 @use "./src/styles/breakpoints" as bk;
 @use "./src/styles/global";
 @use "./src/styles/variables" as var;
+
 .home {
-  &__emptyBox {
-    height: 8rem;
-  }
-}
-// Products.scss
-.productsList {
-  display: grid;
-  max-width: 1400px;
   width: 100%;
+  max-width: 1400px;
   margin: auto;
-  padding-top: 5rem;
-  gap: 1.25rem;
-
-  .productsList-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-
-    .projectCard {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      overflow: hidden;
-      margin: 0.5rem;
-
-      &:hover {
-        transform: translateY(-5px);
-      }
-
-      &__link {
-        text-decoration: none;
-      }
-
-      &__pic {
-        width: 100%;
-        height: auto;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-      }
-
-      &__text {
-        padding: 1rem;
-      }
-
-      &__text__name {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #333;
-      }
-
-      &__text__star {
-        font-size: 1rem;
-        color: #ffa500;
-      }
-
-      &__text__cat {
-        font-size: 1.1rem;
-      }
-
-      &__text__desc {
-        font-size: 1rem;
-        color: #666;
-      }
+  &-sectionTitle {
+    font-size: 2rem;
+    color: cl.$primaryCl;
+    @include bk.mobile {
+      padding-left: 1rem;
+    }
+    @include bk.tablet {
+      padding-left: 1.5rem;
+    }
+    @include bk.desktop {
+      width: calc(100% - 4rem);
+      padding-left: 2rem;
+    }
+    @include bk.bigScreen {
+      width: calc(100% - 6rem);
+      padding-left: 2.5rem;
+    }
+    @include bk.wideScreen {
+      width: calc(100% - 6rem);
+      padding-left: 3rem;
     }
   }
 }

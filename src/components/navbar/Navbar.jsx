@@ -7,6 +7,7 @@ function Navbar() {
   const { pathname } = useLocation();
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const isHomePage = pathname === "/";
 
   useEffect(() => {
@@ -14,8 +15,16 @@ function Navbar() {
       setIsActive(window.scrollY > 0);
     };
 
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const currentUser = {
@@ -24,8 +33,18 @@ function Navbar() {
     isSeller: true,
   };
 
-  const shorterText = (text) => {
-    return window.innerWidth < 1064 ? text.replace(" Service", "") : text;
+  const shorterText = (text, index) => {
+    if (windowWidth < 1064 && windowWidth > 540) {
+      return text.replace(" Service", "");
+    } else if (windowWidth > 1064) {
+      return text;
+    } else if (windowWidth < 541) {
+      if (index > 0 && index < 7) {
+        return text.replace(" Service", "");
+      } else {
+        return "";
+      }
+    }
   };
 
   const linkPaths = [
@@ -73,7 +92,6 @@ function Navbar() {
               >
                 {currentUser.username.charAt(0)}
               </div>
-
               <span>{currentUser.username}</span>
               {isOpen && (
                 <div className="nav-user__options">
@@ -128,9 +146,7 @@ function Navbar() {
                 to={linkPaths[index]}
                 key={index}
               >
-                {window.innerWidth < 1064
-                  ? cat.title.replace(" Service", "")
-                  : cat.title}
+                {shorterText(cat.title, index)}
               </Link>
             ))}
           </div>

@@ -68,13 +68,13 @@
     flex-wrap: wrap;
     font-size: 3rem;
     color: white;
-    transform: translateY(200%);
+    transform: translateY(175px);
     max-width: 70%;
     line-height: 2.8rem;
     @include bk.mobile {
       font-size: 1.5rem;
       padding: 0 1.5rem;
-      transform: translateY(200%);
+      transform: translateY(175px);
       max-width: 70%;
       line-height: 2.8rem;
     }
@@ -87,19 +87,20 @@
     @include bk.desktop {
       font-size: 2.5rem;
       padding: 0 2rem;
-      transform: translateY(300%);
+      transform: translateY(250px);
       max-width: 50%;
       line-height: 3rem;
     }
 
     @include bk.bigScreen {
       font-size: 2.5rem;
+      transform: translateY(300px);
       padding: 0 2.5rem;
     }
     @include bk.wideScreen {
       font-size: 2.5rem;
       padding: 0 3rem;
-      transform: translateY(600%);
+      transform: translateY(300px);
       max-width: 70%;
       line-height: 2.8rem;
     }
@@ -142,12 +143,12 @@
       }
     }
     &-btn {
-      padding: 10px 20px;
+      padding: 0.95rem;
       background-color: cl.$accentCl;
       color: cl.$white;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
+      font-size: 0.75rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
 

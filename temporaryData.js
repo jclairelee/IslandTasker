@@ -13,19 +13,19 @@ export const cards = [
   },
   {
     id: 3,
-    title: "Event/Party Service",
+    title: "Event Service",
     desc: "Bathing assistance, medication reminders, grocery shopping, companionship, event planning, party decorating",
     img: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 4,
-    title: "Pet Care Service",
+    title: "PetCare Service",
     desc: "Dog walking, pet feeding, pet grooming, veterinary transportation",
     img: "https://images.unsplash.com/photo-1621433213916-fde39d28e016?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 5,
-    title: "Yard Work Service",
+    title: "YardWork Service",
     desc: "Lawn care, landscaping, yard waste management",
     img: "https://images.unsplash.com/photo-1622205653084-91811f4547f7?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
@@ -37,7 +37,7 @@ export const cards = [
   },
   {
     id: 7,
-    title: "Child Care Service",
+    title: "ChildCare Service",
     desc: "School drop-off/pick-up, homework assistance, tutoring, babysitting",
     img: "https://images.unsplash.com/photo-1597327190279-43b91807c7a5?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
