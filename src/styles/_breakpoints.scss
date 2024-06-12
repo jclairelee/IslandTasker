@@ -1,6 +1,6 @@
 // X-Large devices
 @mixin wideScreen {
-  @media (min-width: 1480px) {
+  @media (min-width: 1400px) {
     @content;
   }
 }

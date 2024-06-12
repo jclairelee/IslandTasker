@@ -8,7 +8,7 @@
   color: inherit;
   border: 1px solid #ccc;
   border-radius: 16px;
-  min-width: 490px;
+  min-width: 350px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -58,25 +58,30 @@
     flex-direction: row-reverse;
   }
 
-  .card-pic {
+  &-pic {
     height: 22rem;
     overflow: hidden;
     width: 60%;
-    .card-pic__img {
+    &__img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
 
-  .card-data {
+  &-data {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0 1rem;
     width: 40%;
+    @include bk.mobile {
+      padding: 0 1.5rem;
+      gap: 0;
+    }
     @include bk.tablet {
       padding: 0 1.5rem;
+      gap: 0;
     }
     @include bk.desktop {
       padding: 0 2rem;
@@ -94,21 +99,45 @@
 
     &__header {
       font-size: 1.6rem;
+
+      @include bk.mobile {
+        font-size: 1.3rem;
+        margin-bottom: 0.69rem;
+      }
+      @include bk.tablet {
+        font-size: 1.45rem;
+        margin-bottom: 0.89rem;
+      }
     }
     &__upper {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
 
       &__price {
         font-weight: bold;
         color: cl.$buttons;
         gap: 1px;
       }
+      &__txt {
+        font-size: 1.2rem;
+        display: flex;
+        gap: 0.1rem;
+        @include bk.mobile {
+          font-size: 0.78rem;
+        }
+      }
     }
     &__middle {
       font-size: 0.75rem;
       line-height: 1.5rem;
+      @include bk.mobile {
+        margin: 0.69rem 0;
+      }
+      @include bk.tablet {
+        margin: 0.89rem 0;
+      }
       &__odd {
         text-align: end;
       }
@@ -143,7 +172,11 @@
       gap: 1rem;
       margin: auto;
       width: 100%;
-
+      @include bk.mobile {
+        gap: 0.5rem;
+        font-size: 0.5rem;
+        flex-wrap: wrap;
+      }
       &__odd {
         display: flex;
         justify-content: end;
@@ -154,6 +187,9 @@
         padding: 0 10px;
         color: cl.$buttons;
         border-radius: 1rem;
+        @include bk.mobile {
+          padding: 0 6px;
+        }
       }
     }
   }
@@ -165,7 +201,13 @@
     background-color: cl.$accentCl;
     color: #fff;
     font-size: 14px;
-    margin: 0.89rem 0;
+    margin-top: 0.89rem;
+    @include bk.mobile {
+      margin-top: 0.69rem;
+    }
+    @include bk.tablet {
+      margin-top: 0.89rem;
+    }
     cursor: pointer;
     transition: background-color 0.3s;
 

@@ -13,6 +13,7 @@ function Home() {
   return (
     <div className="home">
       <Featured />
+      <BookingSearchBox />
       <div className="home__emptyBox"></div>
       <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
@@ -22,7 +23,6 @@ function Home() {
       <Partners />
       <Card taskers={taskers} />
       <ServiceDark />
-      <BookingSearchBox />
     </div>
   );
 }

@@ -17,7 +17,6 @@ const BookingSearchBox = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    // Implement your search logic here
     console.log("Searching with keyword:", keyword, "and date:", startDate);
   };
 
@@ -25,22 +24,29 @@ const BookingSearchBox = () => {
     <div className="search">
       <form onSubmit={handleSearch} className="search__form">
         <div className="search__input">
-          <input
-            type="text"
-            placeholder="Enter Service keyword..."
-            value={keyword}
-            onChange={handleKeywordChange}
-            className="search__input-field"
-          />
-          <DatePicker
-            selected={startDate}
-            onChange={handleDateChange}
-            dateFormat="MM/dd/yyyy"
-            className="search__input-datepicker"
-          />
-          <button type="submit" className="search__button">
-            Search
-          </button>
+          <div className="search__input-fieldBox">
+            <input
+              type="text"
+              placeholder="Enter Service keyword..."
+              value={keyword}
+              onChange={handleKeywordChange}
+              className="search__input-field"
+            />
+          </div>
+          <div className="search__input-date">
+            <DatePicker
+              selected={startDate}
+              onChange={handleDateChange}
+              dateFormat="Pp"
+              showTimeSelect
+              timeFormat="HH:mm"
+              className="search__input-datepicker"
+            />
+
+            <button type="submit" className="search__button">
+              Search
+            </button>
+          </div>
         </div>
       </form>
       <div className="search-categories">

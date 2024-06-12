@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Card.scss";
 import { Link } from "react-router-dom";
 
 function Card({ taskers }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 485);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 485);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const renderStarEmojis = (count) => {
     const stars = [];
     for (let i = 0; i < count; i++) {
@@ -27,7 +40,6 @@ function Card({ taskers }) {
     return formattedWords.join(", ");
   };
 
-  // Assuming `taskers` is an array of tasker objects
   taskers.forEach((tasker) => {
     const formattedTasks = formatAvailableTask(tasker.availabletask);
     console.log(formattedTasks);
@@ -40,11 +52,11 @@ function Card({ taskers }) {
           className={`card ${index % 2 === 0 ? "" : "card-odd"}`}
           key={index}
         >
-          <div className={`card-pic card-pic${index % 2 === 0 ? "" : "__odd"}`}>
+          <div className={`card-pic ${index % 2 === 0 ? "" : "card-pic__odd"}`}>
             <img src={tasker.pp} alt="" className="card-pic__img" />
           </div>
           <div
-            className={`card-data card-data${index % 2 === 0 ? "" : "__odd"}`}
+            className={`card-data ${index % 2 === 0 ? "" : "card-data__odd"}`}
           >
             <h2 className="card-data__header">{tasker.username}</h2>
             <div
@@ -53,23 +65,23 @@ function Card({ taskers }) {
               }`}
             >
               <span className="card-data__upper__price">
-                $ {tasker.price} Hourly
+                {isMobile ? `$ ${tasker.price}` : `$ ${tasker.price} Hourly`}
               </span>
               <span className="card-data__upper__txt">
                 {renderStarEmojis(tasker.star)}
               </span>
             </div>
             <span
-              className={`card-data__middle card-data__middle${
-                index % 2 === 0 ? "" : "__odd"
+              className={`card-data__middle ${
+                index % 2 === 0 ? "" : "card-data__middle__odd"
               }`}
             >
-              {tasker.desc}
+              {isMobile ? `${tasker.desc.slice(0, 50)}...` : tasker.desc}
             </span>
 
             <div
-              className={`card-data__bottom card-data__bottom${
-                index % 2 === 0 ? "" : "__odd"
+              className={`card-data__bottom ${
+                index % 2 === 0 ? "" : "card-data__bottom__odd"
               }`}
             >
               {tasker.availabletask.map((task, index) => (

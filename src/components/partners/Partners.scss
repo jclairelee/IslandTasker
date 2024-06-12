@@ -35,21 +35,26 @@
     color: cl.$sectionBg;
     font-weight: 500;
     height: 4rem;
-    // overflow: hidden;
-
+    width: 100%;
+    overflow: hidden;
+    @include bk.wideScreen {
+      width: 1400px;
+    }
     &__logo {
       height: 4rem;
       object-fit: contain;
       transition: transform 0.3s ease;
-      animation: slideLeft 10s linear;
+      animation: slideLeft 10s linear infinite;
+      transform: translateX(130%);
     }
   }
 }
 
 @keyframes slideLeft {
   0% {
-    transform: translateX(0);
+    transform: translateX(130%);
   }
+
   100% {
     transform: translateX(-130%);
   }

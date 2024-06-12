@@ -9,16 +9,16 @@ function Taskers() {
     <div className="taskers">
       <div className="taskers-container">
         <span className="taskers__pageTitle">
-          Liverr {">"} Graphics & Design {">"}
+          Island Tasker {">"} Cleaning {">"}
         </span>
-        <h1>AI Artists</h1>
+        <h1 className="taskers__title">Cleaning</h1>
         <p className="taskers__text">
-          Explore the boundaries of art and technology with Liverr's AI artists
+          Explore the boundaries of art and cleaning with Island Taskers
         </p>
         <PageHeader />
         <div className="taskers__cards">
-          {taskers.map((gig) => (
-            <PageCard key={gig.id} item={gig} />
+          {taskers.map((task) => (
+            <PageCard key={task.id} item={task} />
           ))}
         </div>
       </div>

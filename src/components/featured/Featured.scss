@@ -4,9 +4,6 @@
 @use "./src/styles/variables" as var;
 
 .featured {
-  display: flex;
-  justify-content: center;
-  color: cl.$white;
   position: relative;
   overflow: hidden;
   background-color: cl.$darkGray;
@@ -32,25 +29,20 @@
     height: var.$hero-wide-screen-h;
   }
 
-  &::before,
-  &::after {
+  &::before {
     content: "";
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(89, 89, 89, 0) 65%,
-      rgb(0, 0, 0) 100%
-    );
-    width: 100%;
-    height: 100%;
     position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 3;
-    opacity: 0.7;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: rgb(0 0 0 / 26%);
+    z-index: 1;
   }
 
   &-wrapper {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,7 +50,6 @@
     width: 100%;
     padding: 20px;
 
-    // Responsive padding adjustments
     @include bk.desktop {
       padding: 15px;
     }
@@ -70,72 +61,98 @@
     }
   }
 
-  &__left {
+  &__header {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    &__header {
-      font-size: 3rem;
-
-      // Responsive font-size adjustments
-      @include bk.desktop {
-        font-size: 2.5rem;
-      }
-      @include bk.tablet {
-        font-size: 2rem;
-      }
+    flex-wrap: wrap;
+    font-size: 3rem;
+    color: white;
+    transform: translateY(200%);
+    max-width: 70%;
+    line-height: 2.8rem;
+    @include bk.mobile {
+      font-size: 1.5rem;
+      padding: 0 1.5rem;
+      transform: translateY(200%);
+      max-width: 70%;
+      line-height: 2.8rem;
+    }
+    @include bk.tablet {
+      font-size: 2.5rem;
+      padding: 0 1.5rem;
+      max-width: 60%;
+      line-height: 3rem;
+    }
+    @include bk.desktop {
+      font-size: 2.5rem;
+      padding: 0 2rem;
+      transform: translateY(300%);
+      max-width: 50%;
+      line-height: 3rem;
     }
 
-    &__point {
-      font-style: italic;
-      font-weight: 300;
+    @include bk.bigScreen {
+      font-size: 2.5rem;
+      padding: 0 2.5rem;
     }
+    @include bk.wideScreen {
+      font-size: 2.5rem;
+      padding: 0 3rem;
+      transform: translateY(600%);
+      max-width: 70%;
+      line-height: 2.8rem;
+    }
+  }
 
-    &__search {
-      background-color: cl.$white;
-      border-radius: 5px;
+  &__point {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  &__search {
+    background-color: cl.$white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+
+    &-input {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      overflow: hidden;
+      gap: 10px;
+    }
+    &-img {
+      width: 20px;
+      height: 20px;
+      margin: 10px;
+    }
+    &-textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 100%;
+      outline: none;
 
-      &-input {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      &::placeholder {
+        color: gray;
       }
-      &-img {
-        width: 20px;
-        height: 20px;
-        margin: 10px;
-      }
-      &-textarea {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        width: 100%;
-        outline: none;
+    }
+    &-btn {
+      padding: 10px 20px;
+      background-color: cl.$accentCl;
+      color: cl.$white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
 
-        &::placeholder {
-          color: gray;
-        }
-      }
-      &-btn {
-        padding: 10px 20px;
-        background-color: cl.$accentCl;
-        color: cl.$white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-          background-color: darken(cl.$accentCl, 10%);
-        }
+      &:hover {
+        background-color: darken(cl.$accentCl, 10%);
       }
     }
   }

@@ -1,9 +1,19 @@
+@use "./src/styles/_color" as cl;
+@use "./src/styles/breakpoints" as bk;
+@use "./src/styles/global";
+@use "./src/styles/variables" as var;
+
 .pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-
+  max-width: 1400px;
+  @include bk.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
   &__left {
     display: flex;
     align-items: center;

@@ -22,7 +22,7 @@ function PageHeader() {
         <span className="pageHeader__right__sortType">
           {sort === "sales" ? "Best Selling" : "Newest"}
         </span>
-        <img src="./img/down.png" alt="" onclick={() => setOpen(!open)} />
+        <img src="./img/down.png" alt="" onClick={() => setOpen(!open)} />
         {open && (
           <div className="pageHeader__right-menu">
             <span>Newest</span>

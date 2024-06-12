@@ -17,6 +17,7 @@
   border-radius: 1rem;
   z-index: 999;
   top: 34rem;
+  max-width: 95%;
   @include bk.tablet {
     top: 36rem;
   }
@@ -44,18 +45,34 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
+    width: 100%;
+    @include bk.mobile {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
     &-field {
-      padding: 12px;
+      padding: 8px 0;
       margin-right: 10px;
-      border: 2px solid cl.$gray;
-      border-radius: 25px;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
       font-size: 16px;
       outline: none;
       transition: border-color 0.3s ease;
-
+      width: -webkit-fill-available;
+      &::placeholder {
+        padding: 0 10px;
+      }
+      &Box {
+        width: 100%;
+      }
       &:focus {
         border-color: cl.$accentCl;
       }
+    }
+    &-date {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
     &-datepicker {
       padding: 12px;
@@ -73,11 +90,11 @@
   }
 
   &__button {
-    padding: 12px 24px;
+    padding: 10px 24px;
     background-color: cl.$accentCl;
     color: #fff;
     border: none;
-    border-radius: 25px; // Rounded
+    border-radius: 25px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -109,4 +126,7 @@
       }
     }
   }
+}
+.react-datepicker__input-container input {
+  width: 6.5rem !important;
 }

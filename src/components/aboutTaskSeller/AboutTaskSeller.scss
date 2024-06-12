@@ -1,6 +1,7 @@
 @use "./src/styles/_color" as cl;
 @use "./src/styles/breakpoints" as bk;
 @use "./src/styles/global";
+@use "./src/styles/variables" as var;
 
 .seller {
   margin-top: 50px;

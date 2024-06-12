@@ -7,14 +7,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
-
+  padding: 2rem 0;
   &-container {
     padding: 30px 0px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 0.9rem;
     max-width: 1400px;
     width: 100%;
+
     @include bk.mobile {
       padding: 0rem 1.25rem;
       width: calc(100% - 2.5rem);
@@ -43,15 +44,23 @@
     font-size: 13px;
     color: #555;
   }
+  &__title {
+    margin: 0;
+  }
 
   &__text {
     color: #999;
     font-weight: 300;
+    margin: 0;
+    margin-bottom: 1.5rem;
   }
 
   &__cards {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    @include bk.mobile {
+      display: block;
+    }
   }
 }
