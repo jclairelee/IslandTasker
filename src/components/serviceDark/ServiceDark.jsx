@@ -10,7 +10,7 @@ function ServiceDark() {
             className="serviceDark__header serviceDark__sitename"
             translate="no"
           >
-            Island <i>Tasker</i>
+            Island <i style={{ fontFamily: "Permanent Marker" }}>Tasker</i>
           </h1>
           <h1 className="serviceDark__header">
             Simplify Your Daily Tasks with Island Tasker

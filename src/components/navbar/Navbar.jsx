@@ -73,10 +73,17 @@ function Navbar() {
               className={`nav-topLogo__text ${
                 !isHomePage ? "nav-topLogo__textNotHome" : ""
               }`}
+              style={{ fontFamily: "Permanent Marker" }}
             >
               Island
             </span>
-            <span className="nav-topLogo__dot">Tasker</span>
+            <span
+              className="nav-topLogo__dot"
+              style={{ fontFamily: "Permanent Marker" }}
+            >
+              {" "}
+              Tasker
+            </span>
           </Link>
         </div>
         <div className="nav-topMenu">

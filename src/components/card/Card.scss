@@ -25,31 +25,31 @@
       padding: 0rem 1.25rem;
       width: calc(100% - 2.5rem);
       gap: 1rem;
-      padding: 1rem 0;
+      padding-bottom: 1rem;
     }
     @include bk.tablet {
       padding: 0rem 2rem;
       width: calc(100% - 4rem);
       gap: 1.5rem;
-      padding: 1.5rem 0;
+      padding-bottom: 1.5rem;
     }
     @include bk.desktop {
       padding: 0rem 2rem;
       width: calc(100% - 4rem);
       gap: 2rem;
-      padding: 2rem 0;
+      padding-bottom: 2rem;
     }
     @include bk.bigScreen {
       padding: 0rem 3rem;
       width: calc(100% - 6rem);
       gap: 2.5rem;
-      padding: 2.5rem 0;
+      padding-bottom: 2.5rem;
     }
     @include bk.wideScreen {
       padding: 0rem 3rem;
       width: calc(100% - 6rem);
       gap: 3rem;
-      padding: 3rem 0;
+      padding-bottom: 3rem;
     }
   }
 

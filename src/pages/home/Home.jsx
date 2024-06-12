@@ -30,7 +30,12 @@ function Home() {
       <Featured />
       <BookingSearchBox />
       <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
-      <h1 className="home-sectionTitle">Categories</h1>
+      <h1
+        style={{ fontFamily: "Permanent Marker" }}
+        className="home-sectionTitle"
+      >
+        Categories
+      </h1>
 
       <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
@@ -39,10 +44,14 @@ function Home() {
       </Slide>
 
       <Partners />
-      <h1 className="home-sectionTitle">Trusted Taskers </h1>
+      <h1
+        style={{ fontFamily: "Permanent Marker" }}
+        className="home-sectionTitle"
+      >
+        Trusted Taskers{" "}
+      </h1>
       <Card taskers={taskers} />
       <ServiceDark />
-      <ServiceArea />
     </div>
   );
 }
