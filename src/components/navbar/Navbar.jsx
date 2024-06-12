@@ -57,7 +57,7 @@ function Navbar() {
             >
               Island
             </span>
-            <span className="nav-topLogo__dot">Taskers</span>
+            <span className="nav-topLogo__dot">Tasker</span>
           </Link>
         </div>
         <div className="nav-topMenu">

@@ -8,7 +8,8 @@ import { cards, projects, taskers } from "../../../temporaryData";
 import ServiceDark from "../../components/serviceDark/ServiceDark";
 import Card from "../../components/card/Card";
 import BookingSearchBox from "../../components/bookingSearchBox/BookingSearchBox";
-
+import MapComponent from "../../components/mapComponent/MapComponent";
+import ServiceArea from "../../components/mapComponent/ServiceArea";
 function Home() {
   return (
     <div className="home">
@@ -23,6 +24,7 @@ function Home() {
       <Partners />
       <Card taskers={taskers} />
       <ServiceDark />
+      <ServiceArea />
     </div>
   );
 }

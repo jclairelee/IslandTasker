@@ -12,6 +12,8 @@ import Message from "./pages/singleMsg/SingleMsg";
 import MyPurchase from "./pages/myPurchase/MyPurchase.jsx";
 import Taskers from "./pages/taskers/Taskers.jsx";
 import Task from "./pages/task/Task.jsx";
+import "leaflet/dist/leaflet.css";
+
 function App() {
   const Layout = () => {
     return (
