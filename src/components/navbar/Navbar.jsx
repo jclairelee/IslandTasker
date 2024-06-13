@@ -150,7 +150,7 @@ function Navbar() {
             {cards.map((cat, index) => (
               <Link
                 className="nav-user__optionsLink"
-                to={linkPaths[index]}
+                to={`/taskers?cat=${cat.title.substring(0, 2).toLowerCase()}`}
                 key={index}
               >
                 {shorterText(cat.title, index)}

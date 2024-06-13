@@ -40,10 +40,9 @@ function Card({ taskers }) {
     return formattedWords.join(", ");
   };
 
-  taskers.forEach((tasker) => {
-    const formattedTasks = formatAvailableTask(tasker.availabletask);
-    console.log(formattedTasks);
-  });
+  // taskers.forEach((tasker) => {
+  //   const formattedTasks = formatAvailableTask(tasker.availabletask);
+  // });
 
   return (
     <div className="card-wrapper">

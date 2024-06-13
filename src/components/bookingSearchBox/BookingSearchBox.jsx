@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BookingSearchBox.scss";
@@ -6,7 +7,7 @@ import "./BookingSearchBox.scss";
 const BookingSearchBox = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [keyword, setKeyword] = useState("");
-
+  const navigate = useNavigate();
   const handleDateChange = (date) => {
     setStartDate(date);
   };
@@ -17,7 +18,9 @@ const BookingSearchBox = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
+    setKeyword(" ");
     console.log("Searching with keyword:", keyword, "and date:", startDate);
+    navigate("/searchResult");
   };
 
   return (
@@ -43,7 +46,11 @@ const BookingSearchBox = () => {
               className="search__input-datepicker"
             />
 
-            <button type="submit" className="search__button">
+            <button
+              type="submit"
+              className="search__button"
+              onClick={() => handleSearch}
+            >
               Search
             </button>
           </div>

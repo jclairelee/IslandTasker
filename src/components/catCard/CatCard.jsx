@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 function CatCard({ card }) {
   return (
-    <Link to="/taskers?cat=cleaning">
+    <Link to={`/taskers?cat=${card.title.substr(0, 2).toLowerCase()}`}>
       <div className="catCard">
-        <img src={card.img} alt="" className="catCard__pic" />
+        <img src={card.img} alt={card.title} className="catCard__pic" />
+        <span className="catCard__title">{card.title}</span>{" "}
         {/* <span className="catCard__desc">{card.desc}</span> */}
-        <span className="catCard__title">{card.title}</span>
       </div>
     </Link>
   );

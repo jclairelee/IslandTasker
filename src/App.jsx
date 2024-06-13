@@ -13,6 +13,7 @@ import MyPurchase from "./pages/myPurchase/MyPurchase.jsx";
 import Taskers from "./pages/taskers/Taskers.jsx";
 import Task from "./pages/task/Task.jsx";
 import "leaflet/dist/leaflet.css";
+import ServiceArea from "./components/serviceArea/ServiceArea.jsx";
 
 function App() {
   const Layout = () => {
@@ -35,9 +36,14 @@ function App() {
           element: <Home />,
         },
         {
+          path: "/searchResult",
+          element: <ServiceArea />,
+        },
+        {
           path: "/taskers",
           element: <Taskers />,
         },
+
         {
           path: "/mySale",
           element: <MySale />,

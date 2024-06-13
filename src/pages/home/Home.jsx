@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Home.scss";
 import Featured from "../../components/featured/Featured";
 import Partners from "../../components/partners/Partners";
@@ -8,10 +8,13 @@ import { cards, projects, taskers } from "../../../temporaryData";
 import ServiceDark from "../../components/serviceDark/ServiceDark";
 import Card from "../../components/card/Card";
 import BookingSearchBox from "../../components/bookingSearchBox/BookingSearchBox";
-import MapComponent from "../../components/mapComponent/MapComponent";
-import ServiceArea from "../../components/mapComponent/ServiceArea";
+import Map from "../../components/map/Map";
+import ServiceArea from "../../components/serviceArea/ServiceArea";
+import DrawingAnimation from "../../components/drawingAnimation/DrawingAnimation";
+
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const trustedSection = useRef(null);
 
   useEffect(() => {
     function handleScroll() {
@@ -36,14 +39,13 @@ function Home() {
       >
         Categories
       </h1>
-
       <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
         ))}
       </Slide>
-
-      <Partners />
+      {/* <Partners /> */}{" "}
+      <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
       <h1
         style={{ fontFamily: "Permanent Marker" }}
         className="home-sectionTitle"
@@ -51,6 +53,7 @@ function Home() {
         Trusted Taskers{" "}
       </h1>
       <Card taskers={taskers} />
+      <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
       <ServiceDark />
     </div>
   );
