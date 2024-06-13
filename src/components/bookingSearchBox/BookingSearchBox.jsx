@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,18 +6,39 @@ import "./BookingSearchBox.scss";
 
 const BookingSearchBox = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [isTyping, setIsTyping] = useState(true);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
   const handleDateChange = (date) => {
     setStartDate(date);
   };
 
-  const handleKeywordChange = (event) => {
-    setKeyword(event.target.value);
+  const [index, setIndex] = useState(0);
+  const [word, setWord] = useState("");
+
+  useEffect(() => {
+    if (isTyping && index < word.length) {
+      const typingTimeout = setTimeout(() => {
+        setKeyword((prevKeyword) => prevKeyword + word[index]);
+        setIndex((prevIndex) => prevIndex + 1);
+      }, 90);
+      return () => clearTimeout(typingTimeout);
+    } else if (index === word.length) {
+      setIsTyping(false);
+    }
+  }, [isTyping, index, word]);
+
+  const handleWordClick = (word) => {
+    setKeyword("");
+    setIndex(0);
+    setWord(word);
+    setIsTyping(true);
   };
 
   const handleSearch = (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     setKeyword(" ");
     console.log("Searching with keyword:", keyword, "and date:", startDate);
     navigate("/searchResult");
@@ -32,7 +53,7 @@ const BookingSearchBox = () => {
               type="text"
               placeholder="Enter Service keyword..."
               value={keyword}
-              onChange={handleKeywordChange}
+              onChange={(event) => setKeyword(event.target.value)}
               className="search__input-field"
             />
           </div>
@@ -58,10 +79,30 @@ const BookingSearchBox = () => {
       </form>
       <div className="search-categories">
         <span className="search-categories__txt">Popular:</span>
-        <button className="search-categories__keyword">Babysitting</button>
-        <button className="search-categories__keyword">Shopping</button>
-        <button className="search-categories__keyword">Moving</button>
-        <button className="search-categories__keyword">Dog Walking</button>
+        <button
+          className="search-categories__keyword"
+          onClick={() => handleWordClick("Babysitting")}
+        >
+          Babysitting
+        </button>
+        <button
+          className="search-categories__keyword"
+          onClick={() => handleWordClick("Shopping")}
+        >
+          Shopping
+        </button>
+        <button
+          className="search-categories__keyword"
+          onClick={() => handleWordClick("Moving")}
+        >
+          Moving
+        </button>
+        <button
+          className="search-categories__keyword"
+          onClick={() => handleWordClick("Dog Walking")}
+        >
+          Dog Walking
+        </button>
       </div>
     </div>
   );

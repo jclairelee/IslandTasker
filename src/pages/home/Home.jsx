@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Home.scss";
 import Featured from "../../components/featured/Featured";
-import Partners from "../../components/partners/Partners";
 import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import { cards, projects, taskers } from "../../../temporaryData";
@@ -10,7 +9,6 @@ import Card from "../../components/card/Card";
 import BookingSearchBox from "../../components/bookingSearchBox/BookingSearchBox";
 import Map from "../../components/map/Map";
 import ServiceArea from "../../components/serviceArea/ServiceArea";
-import DrawingAnimation from "../../components/drawingAnimation/DrawingAnimation";
 
 function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,7 +42,7 @@ function Home() {
           <CatCard key={card.id} card={card} />
         ))}
       </Slide>
-      {/* <Partners /> */}{" "}
+
       <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
       <h1
         style={{ fontFamily: "Permanent Marker" }}

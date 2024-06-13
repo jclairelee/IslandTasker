@@ -35,10 +35,28 @@
   }
   &-left {
     width: 50%;
-    background-color: cl.$darkGray;
+    @include bk.mobile {
+      width: 100%;
+    }
+    @include bk.tablet {
+      margin: 2rem 0 2rem 2rem;
+    }
+    @include bk.desktop {
+      margin: 2rem 0 2rem 2rem;
+    }
+    @include bk.bigScreen {
+      margin: 3rem 0 3rem 3rem;
+    }
+    @include bk.wideScreen {
+      margin: 3rem 0 3rem 3rem;
+    }
   }
   &-right {
     width: 50%;
+
+    @include bk.mobile {
+      width: 100%;
+    }
     &Box {
       &__profile {
         display: flex;
@@ -51,7 +69,6 @@
 
         @include bk.mobile {
           flex-direction: column;
-          margin: 1.25rem 0 1.25rem 1.25rem;
         }
         @include bk.tablet {
           flex-direction: column;

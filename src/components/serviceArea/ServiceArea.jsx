@@ -13,7 +13,18 @@ const ServiceArea = () => {
     [49.1666, -123.936], // Nanaimo, BC
     [49.2404, -124.8028], // Port Alberni, BC
   ]);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 767);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 767);
+    };
 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   useEffect(() => {
     fetch("/Parksville.geojson")
       .then((response) => response.json())
@@ -94,13 +105,24 @@ const ServiceArea = () => {
 
     window.location.href = profileUrl;
   };
+  const mapStyling_mobile = {
+    height: "30vh",
+    width: "100%",
+    borderRadius: "16px",
+  };
+  const mapStyling_regular = {
+    height: "100vh",
+    width: "100%",
+    borderRadius: "16px",
+  };
   return (
     <div className="serviceArea">
       <div className="serviceArea-left">
+        <h1>Results on Map</h1>
         <MapContainer
           center={center}
           zoom={zoom}
-          style={{ height: "100vh", width: "100%", borderRadius: "16px" }}
+          style={isSmallScreen ? mapStyling_mobile : mapStyling_regular}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -120,6 +142,7 @@ const ServiceArea = () => {
         </MapContainer>
       </div>
       <div className="serviceArea-right">
+        <h1>Searched Taskers</h1>
         <div className="serviceArea-rightBox">
           {taskers.map((tasker, index) => (
             <div className="serviceArea-rightBox__profile" key={index}>
