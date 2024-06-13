@@ -72,8 +72,8 @@ function Footer() {
         <hr />
         <div className="footer__bottom">
           <div className="footer__bottom-left">
-            <h2>Island Marketplace</h2>
-            <span>© Island Marketplace Ltd. 2023</span>
+            <h2>Island Tasker</h2>
+            <span>© Island Tasker. 2024</span>
           </div>
           <div className="footer__bottom-right">
             <div className="footer__bottom-right__social">

@@ -12,13 +12,13 @@
   position: sticky;
   top: 0;
   z-index: 999;
-  transition: 0.5s all ease;
+  transition: 0.2s all ease;
   max-width: 1400px;
   margin: auto;
   &Active {
     background-color: cl.$primaryCl;
     color: cl.$accentCl;
-    // transition: 2.5s all ease-in-out;
+    transition: 1s all ease-in-out;
     width: 100%;
 
     button {
@@ -94,8 +94,9 @@
     justify-content: space-between;
 
     @include bk.mobile {
-      padding: 2rem 1.25rem;
+      padding: 1rem 1.25rem;
       width: calc(100% - 2.5rem);
+      min-width: 300px;
     }
     @include bk.tablet {
       padding: 2rem;
@@ -117,7 +118,7 @@
     margin: 0 auto;
     &Active {
       @include bk.mobile {
-        padding: 2rem 1.25rem;
+        padding: 1rem 1.25rem;
         width: calc(100% - 2.5rem);
       }
       @include bk.tablet {
@@ -138,6 +139,15 @@
       }
     }
     &Logo {
+      @include bk.mobile {
+        font-size: 1.5rem;
+      }
+      @include bk.tablet {
+        font-size: 1.7rem;
+      }
+      @include bk.desktop {
+        font-size: 1.9rem;
+      }
       font-size: 2.125rem;
       font-weight: bold;
 
@@ -230,6 +240,7 @@
       @include bk.mobile {
         padding: 0rem 1.25rem;
         width: calc(100% - 2.5rem);
+        min-width: 300px;
       }
       @include bk.tablet {
         padding: 0rem 2rem;
