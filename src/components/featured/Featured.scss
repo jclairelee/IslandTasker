@@ -6,7 +6,8 @@
 .featured {
   position: relative;
   overflow: hidden;
-  background-color: cl.$darkGray;
+  background-color: cl.$lightGray;
+  background-image: url("/img/LittleQualicumRiver.jpg");
   transition: background-image 1s ease-in-out;
   animation: changeBg 30s infinite;
   background-size: cover;

@@ -38,24 +38,26 @@
     @include bk.mobile {
       width: 100%;
     }
-    @include bk.tablet {
-      margin: 2rem 0 2rem 2rem;
-    }
-    @include bk.desktop {
-      margin: 2rem 0 2rem 2rem;
-    }
-    @include bk.bigScreen {
-      margin: 3rem 0 3rem 3rem;
-    }
-    @include bk.wideScreen {
-      margin: 3rem 0 3rem 3rem;
-    }
   }
   &-right {
     width: 50%;
 
     @include bk.mobile {
       width: 100%;
+    }
+    &__header {
+      @include bk.tablet {
+        margin-left: 2rem;
+      }
+      @include bk.desktop {
+        margin-left: 2rem;
+      }
+      @include bk.bigScreen {
+        margin-left: 3rem;
+      }
+      @include bk.wideScreen {
+        margin-left: 3rem;
+      }
     }
     &Box {
       &__profile {
@@ -157,6 +159,24 @@
 
           &:hover {
             background-color: #0056b3;
+          }
+        }
+        &__viewMore {
+          display: flex;
+          justify-content: center;
+          button {
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            background-color: cl.$accentCl;
+            color: cl.$text;
+            &:hover {
+              background-color: cl.$secondaryAccentCl;
+              transition: opacity 0.3s ease;
+              color: white;
+              cursor: pointer;
+            }
           }
         }
       }

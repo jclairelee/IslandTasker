@@ -115,10 +115,17 @@ const ServiceArea = () => {
     width: "100%",
     borderRadius: "16px",
   };
+  const [showAll, setShowAll] = useState(false);
+  const initialDisplayCount = 4;
+
+  const displayedTaskers = showAll
+    ? taskers
+    : taskers.slice(0, initialDisplayCount);
+
   return (
     <div className="serviceArea">
       <div className="serviceArea-left">
-        <h1>Results on Map</h1>
+        <h1 className="serviceArea-left__title">Results on Map</h1>
         <MapContainer
           center={center}
           zoom={zoom}
@@ -142,9 +149,9 @@ const ServiceArea = () => {
         </MapContainer>
       </div>
       <div className="serviceArea-right">
-        <h1>Searched Taskers</h1>
+        <h1 className="serviceArea-right__header">Searched Taskers</h1>
         <div className="serviceArea-rightBox">
-          {taskers.map((tasker, index) => (
+          {displayedTaskers.map((tasker, index) => (
             <div className="serviceArea-rightBox__profile" key={index}>
               <div className="serviceArea-rightBox__profile__pic">
                 <img src={tasker.pp} alt="Profile" />
@@ -164,6 +171,11 @@ const ServiceArea = () => {
               </div>
             </div>
           ))}
+          {!showAll && taskers.length > initialDisplayCount && (
+            <div className="serviceArea-rightBox__profile__viewMore">
+              <button onClick={() => setShowAll(true)}>View More</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
