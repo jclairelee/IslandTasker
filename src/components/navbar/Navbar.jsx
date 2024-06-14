@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
-import { cards } from "../../../temporaryData";
+import { websiteDetail } from "../../../temporaryData";
 
 function Navbar() {
   const { pathname } = useLocation();
@@ -9,7 +9,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const isHomePage = pathname === "/";
-
+  const navi_content = websiteDetail.navigation;
   useEffect(() => {
     const handleScroll = () => {
       setIsActive(window.scrollY > 0);
@@ -33,30 +33,6 @@ function Navbar() {
     isSeller: true,
   };
 
-  const shorterText = (text, index) => {
-    if (windowWidth < 1064 && windowWidth > 540) {
-      return text.replace(" Service", "");
-    } else if (windowWidth > 1064) {
-      return text;
-    } else if (windowWidth < 541) {
-      if (index > 0 && index < 7) {
-        return text.replace(" Service", "");
-      } else {
-        return "";
-      }
-    }
-  };
-
-  const linkPaths = [
-    "/home",
-    "/cleaning",
-    "/event",
-    "/pet",
-    "/yardwork",
-    "/other",
-    "/childcare",
-  ];
-
   return (
     <div className={`nav ${isActive || !isHomePage ? "navActive" : ""}`}>
       <div
@@ -65,6 +41,8 @@ function Navbar() {
         <div className="nav-topLogo">
           <Link
             to="/"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`nav-topLogo__link ${
               isActive ? "nav-topLogo__linkActive" : ""
             }`}
@@ -147,14 +125,10 @@ function Navbar() {
               isActive || !isHomePage ? "nav-bttmActive" : ""
             }`}
           >
-            {cards.map((cat, index) => (
-              <Link
-                className="nav-user__optionsLink"
-                to={`/taskers?cat=${cat.title.substring(0, 2).toLowerCase()}`}
-                key={index}
-              >
-                {shorterText(cat.title, index)}
-              </Link>
+            {navi_content.map((cat, index) => (
+              <a className="nav-user__optionsLink" href={cat.path} key={index}>
+                {cat.title}
+              </a>
             ))}
           </div>
           <hr />
