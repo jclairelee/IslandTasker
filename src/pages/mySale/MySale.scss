@@ -49,13 +49,16 @@
 }
 table {
   width: 100%;
-
+  text-align: center;
   tr {
     height: 50px;
+
     th {
-      text-align: left;
+      font-weight: bold;
+      background-color: cl.$pastelYellow;
     }
     td {
+      background-color: cl.$pastelGreen;
       sup {
         font-size: 12px;
       }

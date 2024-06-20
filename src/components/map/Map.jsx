@@ -1,79 +1,116 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from "react-leaflet";
+import { taskers } from "../../../temporaryData"; // Assuming this contains your taskers data
+import { MapContainer, TileLayer, Marker, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import proj4 from "proj4";
 
-const Map = () => {
-  const [geojsonData, setGeojsonData] = useState(null);
-  const [address, setAddress] = useState("");
-  const [pinCoordinates, setPinCoordinates] = useState(null);
+const Map = ({ customH, customW, currentPro, radius }) => {
+  const [primaryLatLng, setPrimaryLatLng] = useState(null); // State for transformed coordinates
+  const [proMarker, setProMarker] = useState(null); // State for marker position
 
   useEffect(() => {
-    fetch("/Parksville.geojson")
-      .then((response) => response.json())
-      .then((data) => setGeojsonData(data))
-      .catch((error) => console.error("Error fetching GeoJSON data:", error));
-  }, []);
+    const fetchCoordinates = async () => {
+      const res = taskers.filter(
+        (tasker) => tasker.username === currentPro.username
+      );
 
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
+      if (res.length > 0) {
+        let currentPro_address = res[0].address;
 
-  const handlePinAddress = () => {
-    const geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-      address
-    )}`;
-
-    fetch(geocodeUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+        // Ignore any text starting from ', PARKSVILLE'
+        const indexOfParksville = currentPro_address.indexOf(", PARKSVILLE");
+        if (indexOfParksville !== -1) {
+          currentPro_address = currentPro_address.substring(
+            0,
+            indexOfParksville
+          );
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Geocoding Response:", data);
-        if (data && data.length > 0) {
-          const lat = parseFloat(data[0].lat);
-          const lon = parseFloat(data[0].lon);
-          setPinCoordinates([lat, lon]);
-        } else {
-          console.error("No results found");
+
+        try {
+          const response = await fetch("../../Parksville.geojson");
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+
+          if (data.features) {
+            let coordinatesFound = false;
+
+            data.features.forEach((feature) => {
+              const properties = feature.properties;
+              if (
+                properties &&
+                properties.Address &&
+                properties.Address === currentPro_address
+              ) {
+                const coordinates = feature.geometry.coordinates;
+
+                // Define the source and target coordinate systems for transformation
+                const sourceEPSG =
+                  "+proj=utm +zone=10 +ellps=GRS80 +datum=NAD83 +units=m +no_defs";
+                const targetEPSG =
+                  "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs";
+
+                // Perform coordinate transformation from source to target
+                const transformedCoords = proj4(
+                  sourceEPSG,
+                  targetEPSG,
+                  coordinates
+                );
+
+                // Set primaryLatLng after transformation
+                setPrimaryLatLng(transformedCoords);
+
+                coordinatesFound = true;
+              }
+            });
+
+            if (!coordinatesFound) {
+              console.log(
+                "Coordinates not found for address:",
+                currentPro_address
+              );
+            }
+          } else {
+            console.warn("No features found in GeoJSON data");
+          }
+        } catch (error) {
+          console.error("Error fetching or parsing GeoJSON:", error);
         }
-      })
-      .catch((error) => {
-        console.error("Error fetching geocoding data:", error);
-      });
-  };
+      }
+    };
+
+    fetchCoordinates();
+  }, [currentPro]);
+
+  useEffect(() => {
+    // Update proMarker when primaryLatLng changes
+    if (primaryLatLng) {
+      // Leaflet's Spherical Mercator projection unprojects the transformed coordinates
+      const newLatLng = L.latLng(
+        L.Projection.SphericalMercator.unproject(L.point(primaryLatLng))
+      );
+
+      setProMarker(newLatLng);
+    }
+  }, [primaryLatLng]);
 
   return (
-    <div>
-      <div>
-        <input
-          type="text"
-          value={address}
-          onChange={handleAddressChange}
-          placeholder="Enter Address"
-        />
-        <button onClick={handlePinAddress}>Pin Address</button>
-      </div>
+    proMarker && (
       <MapContainer
-        center={[49.3197, -124.3136]}
-        zoom={9}
-        style={{ height: "80vh", width: "100%" }}
+        center={proMarker}
+        zoom={14}
+        style={{ height: customH, width: customW }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          noWrap={false}
         />
-        {geojsonData && <GeoJSON data={geojsonData} />}
-        {pinCoordinates && (
-          <Marker position={pinCoordinates}>
-            <Popup>You pinned this address!</Popup>
-          </Marker>
-        )}
+        <Circle center={proMarker} radius={radius} />
       </MapContainer>
-    </div>
+    )
   );
 };
 

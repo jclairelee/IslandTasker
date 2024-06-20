@@ -1,12 +1,12 @@
 import React from "react";
-import "./Task.scss";
+import "./Profile.scss";
 import Left from "../../components/left/Left";
 import Right from "../../components/right/RightBox";
 
-function Task() {
+function Profile() {
   return (
-    <div className="task">
-      <div className="task-container">
+    <div className="profile">
+      <div className="profile-container">
         <Left />
       </div>
       <Right />
@@ -14,4 +14,4 @@ function Task() {
   );
 }
 
-export default Task;
+export default Profile;

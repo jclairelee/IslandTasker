@@ -54,9 +54,12 @@
       tr {
         height: 50px;
         th {
-          text-align: left;
+          text-align: center;
+          font-weight: bolder;
+          background-color: cl.$pastelYellow;
         }
         td {
+          background-color: cl.$pastelBlue;
           sup {
             font-size: 12px;
           }
@@ -70,6 +73,7 @@
           .message {
             width: 25px;
             cursor: pointer;
+            margin: auto auto;
           }
         }
         &:nth-child(even) {

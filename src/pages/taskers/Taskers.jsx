@@ -100,12 +100,15 @@ function Taskers() {
         task.availabletask.includes(catName)
       );
       setFilteredTaskers(filtered);
-      console.log(catName);
+
       changeBtnStyle(catName);
     } else {
       setFilteredTaskers(taskers);
     }
   }, [catName]);
+  useEffect(() => {
+    console.log(filteredTaskers);
+  }, [filteredTaskers]);
 
   return (
     <div className="taskers">
@@ -139,7 +142,7 @@ function Taskers() {
         <PageHeader />
         <div className="taskers__cards">
           {filteredTaskers.map((task) => (
-            <PageCard key={task.id} item={task} />
+            <PageCard key={task.id} card={task} />
           ))}
         </div>
       </div>

@@ -11,10 +11,12 @@ import Messages from "./pages/messages/Messages";
 import Message from "./pages/singleMsg/SingleMsg";
 import MyPurchase from "./pages/myPurchase/MyPurchase.jsx";
 import Taskers from "./pages/taskers/Taskers.jsx";
-import Task from "./pages/task/Task.jsx";
+import Profile from "./pages/profile/Profile.jsx";
 import "leaflet/dist/leaflet.css";
 import ServiceArea from "./components/serviceArea/ServiceArea.jsx";
-
+import HowItWorks from "./pages/howitworks/HowItWorks.jsx";
+import Search from "./pages/search/Search.jsx";
+import Contact from "./pages/contact/Contact.jsx";
 function App() {
   const Layout = () => {
     return (
@@ -43,7 +45,6 @@ function App() {
           path: "/taskers",
           element: <Taskers />,
         },
-
         {
           path: "/mySale",
           element: <MySale />,
@@ -65,8 +66,20 @@ function App() {
           element: <Add />,
         },
         {
-          path: "/task/:id",
-          element: <Task />,
+          path: "/profile/:id",
+          element: <Profile />,
+        },
+        {
+          path: "/how",
+          element: <HowItWorks />,
+        },
+        {
+          path: "/search",
+          element: <Search />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
         },
       ],
     },

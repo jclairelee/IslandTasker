@@ -3,7 +3,7 @@ import "./Home.scss";
 import Featured from "../../components/featured/Featured";
 import Slide from "../../components/slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
-import { cards, projects, taskers } from "../../../temporaryData";
+import { websiteDetail, projects, taskers } from "../../../temporaryData";
 import ServiceDark from "../../components/serviceDark/ServiceDark";
 import Card from "../../components/card/Card";
 import BookingSearchBox from "../../components/bookingSearchBox/BookingSearchBox";
@@ -30,6 +30,7 @@ function Home() {
     <div className="home">
       <Featured />
       <BookingSearchBox />
+      {/* <Map customW={"100%"} customH={"25vh"} /> */}
       <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
       <h1
         style={{ fontFamily: "Permanent Marker" }}
@@ -38,7 +39,7 @@ function Home() {
         Categories
       </h1>
       <Slide slidesToShow={5} arrowsScroll={5}>
-        {cards.map((card) => (
+        {websiteDetail.categories.map((card) => (
           <CatCard key={card.id} card={card} />
         ))}
       </Slide>

@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./RightBox.scss";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import PaymentForm from "../paymentForm/PaymentForm";
+
+const stripePromise = loadStripe("your_stripe_publishable_key");
 
 function RightBox() {
   const [startDate, setStartDate] = useState(new Date());
@@ -54,6 +59,9 @@ function RightBox() {
         />
       </div>
       <button className="right-btn">Continue</button>
+      <Elements stripe={stripePromise}>
+        <PaymentForm />
+      </Elements>
     </div>
   );
 }

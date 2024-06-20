@@ -1,42 +1,59 @@
 import React from "react";
 import "./AboutTaskSeller.scss";
+import Map from "../map/Map";
 
-function AboutTaskSeller() {
+function AboutTaskSeller({ currentPro }) {
+  function renderStars(numStars) {
+    const starsArray = [];
+    for (let i = 0; i < numStars; i++) {
+      starsArray.push(<img key={i} src="/img/star.png" alt="star" />);
+    }
+    return starsArray;
+  }
+  const extreactCity = (text) => {
+    const processedTxt = text.split(",");
+    return processedTxt[1];
+  };
+
   return (
     <>
       <div className="seller">
-        <h2>About The Seller</h2>
+        <h2>Tasker Profile</h2>
         <div className="seller__user">
-          <img
-            src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-          />
+          <img src={currentPro.pp} alt={`${currentPro.username} image`} />
           <div className="seller__userinfo">
-            <span>Anna Jane</span>
+            <span>{currentPro.username}</span>
             <div className="seller__userinfo__stars">
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <img src="/img/star.png" alt="" />
-              <span>5</span>
+              {renderStars(currentPro.star)}
             </div>
-            <button>Schedule with Me</button>
-          </div>
+            <button>Send a Message</button>
+          </div>{" "}
+          <Map
+            customW={"100%"}
+            customH={"25vh"}
+            radius={800}
+            currentPro={currentPro}
+          />
         </div>
         <div className="seller__box">
           <div className="seller__boxContainer">
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">From</span>
-              <span className="seller__boxItem__desc">LadySmith</span>
+              <span className="seller__boxItem__desc">
+                {extreactCity(currentPro.address)}
+              </span>
             </div>
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">Member since</span>
-              <span className="seller__boxItem__desc">Aug 2023</span>
+              <span className="seller__boxItem__desc">
+                {currentPro.memberSince}
+              </span>
             </div>
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">Avg. response time</span>
-              <span className="seller__boxItem__desc">4 hours</span>
+              <span className="seller__boxItem__desc">
+                {currentPro.responseTime + " "}hours
+              </span>
             </div>
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">
@@ -46,22 +63,17 @@ function AboutTaskSeller() {
             </div>
             <div className="seller__boxItem">
               <span className="seller__boxItem__title">Languages</span>
-              <span className="seller__boxItem__desc">English</span>
+              <span className="seller__boxItem__desc">
+                {currentPro && currentPro.language
+                  ? currentPro.language.length - 1 > 0
+                    ? currentPro.language.join(", ")
+                    : currentPro.language
+                  : "English"}
+              </span>
             </div>
           </div>
           <hr />
-          <p>
-            I am a certified babysitter with extensive training and hands-on
-            experience in caring for children of all ages. My certification
-            ensures that I am equipped with the necessary skills and knowledge
-            to create a safe, nurturing, and engaging environment for children
-            under my supervision. I have undergone specialized training in child
-            development, safety protocols, and emergency procedures, allowing me
-            to respond effectively to any situation that may arise. My passion
-            for working with children drives me to provide the highest level of
-            care, ensuring that each child feels valued, supported, and happy
-            under my care.
-          </p>
+          <p>{currentPro.desc}</p>
         </div>
       </div>
     </>

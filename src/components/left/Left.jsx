@@ -1,51 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Left.scss";
 import AboutTaskSeller from "../aboutTaskSeller/AboutTaskSeller";
 import Reviews from "../reviews/Reviews";
-
-function renderStars(numStars) {
-  const starsArray = [];
-  for (let i = 0; i < numStars; i++) {
-    starsArray.push(<img key={i} src="/img/star.png" alt="" />);
-  }
-  return starsArray;
-}
+import { useLocation } from "react-router-dom";
+import { taskers, projects } from "../../../temporaryData";
 
 function Left() {
-  const taskerData = {
-    breadcrumbs: ["Island Taskers", "Home Service"],
-    title: "Let Me Help Keep Your Home Running Smoothly",
-    userData: {
-      pp: "https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      name: "Anna Bell",
-      stars: 5,
-    },
-    aboutTasker: {
-      heading: "About This Tasker",
-      description:
-        "I offer home maintenance services that cater to your needs, which could be something like fixing a leaky faucet, painting a room, or tackling a larger project. It doesn't matter what you are facing to. I've got you covered. Let me take care of the upkeep so you can enjoy a well-maintained home hassle-free. If you have any questions or specific requests, feel free to reach out. Your satisfaction is my priority.",
-    },
-  };
+  const currentProId = useLocation().pathname;
+  const [currentPro, setCurrentPro] = useState(null);
+
+  useEffect(() => {
+    const isnum = parseInt(currentProId.replace("/profile/", ""), 10);
+    const searchPro = taskers.find((tasker) => tasker.id === isnum);
+
+    setCurrentPro(searchPro);
+  }, [currentProId]);
+
+  function renderStars(numStars) {
+    const starsArray = [];
+    for (let i = 0; i < numStars; i++) {
+      starsArray.push(<img key={i} src="/img/star.png" alt="" />);
+    }
+    return starsArray;
+  }
+
+  if (!currentPro) {
+    return <div>Loading...</div>;
+  }
+  const findAd = projects.filter((project) => {
+    return project.username === currentPro.username;
+  });
 
   return (
     <div className="left">
       <span className="left__breadcrumbs">
-        {taskerData.breadcrumbs.join(" > ")}
+        {currentPro.availabletask.length - 1 > 0
+          ? currentPro.availabletask.join(", ")
+          : currentPro.availabletask}
       </span>
-      <h1 className="left__title">{taskerData.title}</h1>
-      <div className="left__user">
-        <img className="left__pp" src={taskerData.userData.pp} alt="" />
-        <span>{taskerData.userData.name}</span>
-        <div className="left__stars">
-          {renderStars(taskerData.userData.stars)}
-          <span>{taskerData.userData.stars}</span>
-        </div>
-      </div>
+      {findAd.map((item, idx) => (
+        <React.Fragment key={idx}>
+          <h1 className="left__title">{item.title}</h1>
+          <div className="left__user">
+            <img className="left__pp" src={currentPro.pp} alt="" />
+            <span>{currentPro.username}</span>
+            <div className="left__stars">{renderStars(currentPro.star)}</div>
+          </div>
+          <h2>Task Description</h2>
+          <p>{item.content}</p>
+        </React.Fragment>
+      ))}
 
-      <h2>{taskerData.aboutTasker.heading}</h2>
-      <p>{taskerData.aboutTasker.description}</p>
-      <AboutTaskSeller />
-      <Reviews />
+      <AboutTaskSeller currentPro={currentPro} />
+      <Reviews currentProName={currentPro.username} />
     </div>
   );
 }

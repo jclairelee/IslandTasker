@@ -83,7 +83,7 @@ function Navbar() {
                   {currentUser.isSeller && (
                     <>
                       <Link className="nav-user__optionsLink" to="/mysale">
-                        Tasks
+                        My Sale
                       </Link>
                       <Link className="nav-user__optionsLink" to="/add">
                         Add New Task
@@ -91,7 +91,7 @@ function Navbar() {
                     </>
                   )}
                   <Link className="nav-user__optionsLink" to="/mypurchase">
-                    Orders
+                    My Purchase
                   </Link>
                   <Link className="nav-user__optionsLink" to="/messages">
                     Messages
