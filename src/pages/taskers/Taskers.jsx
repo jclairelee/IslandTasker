@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Taskers.scss";
-import { taskers, websiteDetail } from "../../../temporaryData";
+import { taskers } from "../../../temporaryData";
 import PageCard from "../../components/pageCard/PageCard";
 import PageHeader from "../../components/pageHeader/PageHeader";
-import { useLocation } from "react-router-dom";
 
 function Taskers() {
   const [catName, setCatName] = useState("");
   const [filteredTaskers, setFilteredTaskers] = useState([]);
-  const section = useLocation().search;
   const rideBtnRef = useRef(null);
   const yardBtnRef = useRef(null);
   const cleanBtnRef = useRef(null);
@@ -16,38 +14,42 @@ function Taskers() {
   const maintBtnRef = useRef(null);
   const careBtnRef = useRef(null);
   const categories = [
-    { cat: "?cat=ri", label: "Ride Service", ref: rideBtnRef },
-    { cat: "?cat=ya", label: "Yardwork Service", ref: yardBtnRef },
-    { cat: "?cat=ca", label: "Care Service", ref: careBtnRef },
-    { cat: "?cat=ha", label: "Handyman Service", ref: handyBtnRef },
-    { cat: "?cat=cl", label: "Cleaning Service", ref: cleanBtnRef },
-    { cat: "?cat=ma", label: "Maintenance Service", ref: maintBtnRef },
+    { cat: "ri", label: "Ride Service", ref: rideBtnRef },
+    { cat: "ya", label: "Yardwork Service", ref: yardBtnRef },
+    { cat: "ca", label: "Care Service", ref: careBtnRef },
+    { cat: "ha", label: "Handyman Service", ref: handyBtnRef },
+    { cat: "cl", label: "Cleaning Service", ref: cleanBtnRef },
+    { cat: "ma", label: "Maintenance Service", ref: maintBtnRef },
   ];
+
   useEffect(() => {
-    const lowercasedName = section.toLowerCase();
-    switch (lowercasedName) {
-      case "?cat=ri":
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get("cat");
+
+    switch (catParam) {
+      case "ri":
         setCatName("Ride Service");
         break;
-      case "?cat=ya":
+      case "ya":
         setCatName("Yardwork Service");
         break;
-      case "?cat=ca":
+      case "ca":
         setCatName("Care Service");
         break;
-      case "?cat=ha":
+      case "ha":
         setCatName("Handyman Service");
         break;
-      case "?cat=cl":
+      case "cl":
         setCatName("Cleaning Service");
         break;
-      case "?cat=ma":
-        setCatName("Maintanence Service");
+      case "ma":
+        setCatName("Maintenance Service");
         break;
       default:
         setCatName("");
     }
-  }, [location.search]);
+  }, []);
+
   const changeBtnStyle = (cat) => {
     const resetBtnStyles = () => {
       rideBtnRef.current.style.color = "";
@@ -65,27 +67,27 @@ function Taskers() {
     };
     resetBtnStyles();
     switch (cat) {
-      case "Ride":
+      case "Ride Service":
         rideBtnRef.current.style.color = "#c59837";
         rideBtnRef.current.style.borderBottom = "2px solid #c59837";
         break;
-      case "Yardwork":
+      case "Yardwork Service":
         yardBtnRef.current.style.color = "#c59837";
         yardBtnRef.current.style.borderBottom = "2px solid #c59837";
         break;
-      case "Care":
+      case "Care Service":
         careBtnRef.current.style.color = "#c59837";
         careBtnRef.current.style.borderBottom = "2px solid #c59837";
         break;
-      case "Handyman":
+      case "Handyman Service":
         handyBtnRef.current.style.color = "#c59837";
         handyBtnRef.current.style.borderBottom = "2px solid #c59837";
         break;
-      case "Cleaning":
+      case "Cleaning Service":
         cleanBtnRef.current.style.color = "#c59837";
         cleanBtnRef.current.style.borderBottom = "2px solid #c59837";
         break;
-      case "Maintenance":
+      case "Maintenance Service":
         maintBtnRef.current.style.color = "#c59837";
         maintBtnRef.current.style.borderBottom = "2px solid #c59837";
         break;
@@ -93,6 +95,7 @@ function Taskers() {
         setCatName("");
     }
   };
+
   useEffect(() => {
     // Filter taskers based on the category
     if (catName) {
@@ -106,6 +109,7 @@ function Taskers() {
       setFilteredTaskers(taskers);
     }
   }, [catName]);
+
   useEffect(() => {
     console.log(filteredTaskers);
   }, [filteredTaskers]);
@@ -114,16 +118,12 @@ function Taskers() {
     <div className="taskers">
       <div className="taskers-container">
         <span className="taskers__pageTitle">
-          Island Tasker &gt; Find Taskers &gt;{" "}
-          {catName === null || catName === "" ? "Taskers" : catName}
+          Island Tasker &gt; Find Taskers &gt; {catName ? catName : "Taskers"}
         </span>
-        <h1 className="taskers__title">
-          {catName === null || catName === "" ? "All" : catName}
-        </h1>
+        <h1 className="taskers__title">{catName ? catName : "All"}</h1>
         <p className="taskers__text">
-          Explore the Range of{" "}
-          {catName === null || catName === "" ? "Service" : catName} Available
-          on Island Tasker
+          Explore the Range of {catName ? catName : "Service"} Available on
+          Island Tasker
         </p>
         <div className="taskers-cat">
           {categories.map((category) => (
@@ -131,11 +131,11 @@ function Taskers() {
               key={category.cat}
               ref={category.ref}
               className={`taskers-cat__button ${
-                section === category.cat ? "active" : ""
+                catName === category.label ? "active" : ""
               }`}
-              onClick={() => setCatName(category.label.replace(" Service", ""))}
+              onClick={() => setCatName(category.label)}
             >
-              {category.label.replace(" Service", "")}
+              {category.label}
             </button>
           ))}
         </div>
