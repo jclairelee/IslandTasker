@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.scss";
 import { websiteDetail } from "../../../temporaryData";
@@ -7,31 +7,33 @@ function Navbar() {
   const { pathname } = useLocation();
   const [isActive, setIsActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const isHomePage = pathname === "/";
+
   const navi_content = websiteDetail.navigation;
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsActive(window.scrollY > 0);
-    };
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const currentUser = {
     id: 1,
     username: "Cathy",
     isSeller: true,
   };
+
+  const handleScroll = () => {
+    setIsActive(window.scrollY > 0);
+  };
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className={`nav ${isActive || !isHomePage ? "navActive" : ""}`}>
@@ -82,7 +84,7 @@ function Navbar() {
                 <div className="nav-user__options">
                   {currentUser.isSeller && (
                     <>
-                      <Link className="nav-user__optionsLink" to="/mysale">
+                      <Link className="nav-user__optionsLink" to="/mySale">
                         My Sale
                       </Link>
                       <Link className="nav-user__optionsLink" to="/add">
@@ -90,7 +92,7 @@ function Navbar() {
                       </Link>
                     </>
                   )}
-                  <Link className="nav-user__optionsLink" to="/mypurchase">
+                  <Link className="nav-user__optionsLink" to="/myPurchase">
                     My Purchase
                   </Link>
                   <Link className="nav-user__optionsLink" to="/messages">
@@ -126,9 +128,9 @@ function Navbar() {
             }`}
           >
             {navi_content.map((cat, index) => (
-              <a className="nav-user__optionsLink" href={cat.path} key={index}>
+              <Link className="nav-user__optionsLink" to={cat.path} key={index}>
                 {cat.title}
-              </a>
+              </Link>
             ))}
           </div>
           <hr />

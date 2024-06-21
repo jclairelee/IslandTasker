@@ -231,13 +231,13 @@ export const taskers = [
     id: 1,
     img: "https://images.pexels.com/photos/580151/pexels-photo-580151.jpeg?auto=compress&cs=tinysrgb&w=1600",
     pp: "https://images.pexels.com/photos/720598/pexels-photo-720598.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    desc: "Experienced in professionally trained cleaning and childcare tasks, I offer high-quality AI-generated character art based on your images and prompts. Let's bring your ideas to life! I specialize in bringing a creative touch to every project, ensuring unique and customized results that exceed your expectations. With attention to detail and a passion for perfection, I am committed to delivering exceptional service.",
+    desc: "With extensive expertise in professional cleaning and childcare, I specialize in crafting high-quality character art using AI technology, tailored to your specifications and images. Let's transform your concepts into vibrant realities! Each project is infused with creativity, ensuring distinctive and personalized outcomes that surpass expectations. Dedicated to precision and driven by a pursuit of excellence, I am committed to providing outstanding service.",
     price: 59,
     star: 5,
     distance: 100,
     username: "Anna Bell",
     address: "116 WALLIS ST, PARKSVILLE",
-    availabletask: ["Maintenance", "Cleaning"],
+    availabletask: ["Maintenance", "Cleaning", "Care"],
     schedule: {
       "2024-06-18": {
         available: true,

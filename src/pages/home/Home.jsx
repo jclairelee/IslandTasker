@@ -30,7 +30,6 @@ function Home() {
     <div className="home">
       <Featured />
       <BookingSearchBox />
-      {/* <Map customW={"100%"} customH={"25vh"} /> */}
       <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
       <h1
         style={{ fontFamily: "Permanent Marker" }}

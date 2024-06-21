@@ -107,6 +107,7 @@ const Map = ({ customH, customW, currentPro, radius }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           noWrap={false}
+          style={{ border: "none", outline: "none" }}
         />
         <Circle center={proMarker} radius={radius} />
       </MapContainer>
