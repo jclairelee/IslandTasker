@@ -25,6 +25,7 @@ function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const topTaskers = [taskers[0], taskers[1], taskers[3]];
 
   return (
     <div className="home">
@@ -48,9 +49,9 @@ function Home() {
         style={{ fontFamily: "Permanent Marker" }}
         className="home-sectionTitle"
       >
-        Trusted Taskers{" "}
+        Top Trusted Taskers{" "}
       </h1>
-      <Card taskers={taskers} />
+      <Card taskers={topTaskers} />
       <div style={{ height: isScrolled ? "5.75rem" : "9.75rem" }}></div>
       <ServiceDark />
     </div>

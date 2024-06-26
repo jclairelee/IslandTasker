@@ -96,10 +96,15 @@ const Map = ({ customH, customW, currentPro, radius }) => {
     }
   }, [primaryLatLng]);
 
+  const temporary_coord = [-13852556.369556686, 6333954.2980660135];
+  const temporary_coord_latlang = L.latLng(
+    L.Projection.SphericalMercator.unproject(L.point(temporary_coord))
+  );
+
   return (
     proMarker && (
       <MapContainer
-        center={proMarker}
+        center={temporary_coord_latlang}
         zoom={14}
         style={{ height: customH, width: customW }}
       >
@@ -109,7 +114,7 @@ const Map = ({ customH, customW, currentPro, radius }) => {
           noWrap={false}
           style={{ border: "none", outline: "none" }}
         />
-        <Circle center={proMarker} radius={radius} />
+        <Circle center={temporary_coord_latlang} radius={radius} />
       </MapContainer>
     )
   );

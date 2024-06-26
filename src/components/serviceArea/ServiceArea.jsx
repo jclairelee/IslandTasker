@@ -111,7 +111,7 @@ const ServiceArea = () => {
     borderRadius: "16px",
   };
   const mapStyling_regular = {
-    height: "100vh",
+    height: "100%",
     width: "100%",
     borderRadius: "16px",
   };

@@ -75,7 +75,9 @@ function Card({ taskers }) {
                 index % 2 === 0 ? "" : "card-data__middle__odd"
               }`}
             >
-              {isMobile ? `${tasker.desc.slice(0, 50)}...` : tasker.desc}
+              {isMobile
+                ? `${tasker.desc.slice(0, 100)}...`
+                : `${tasker.desc.slice(0, 230)}...`}
             </span>
 
             <div
