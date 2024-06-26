@@ -1,0 +1,45 @@
+.slideList {
+  display: flex;
+  position: relative;
+
+  &-content {
+    display: flex;
+    width: 1400px;
+    justify-content: center;
+    overflow: hidden;
+    margin: auto auto;
+
+    &__cards {
+      display: flex;
+      // width: 1350px;
+      z-index: -1;
+    }
+    &__arrow {
+      position: absolute;
+      z-index: 2;
+      border-radius: 50%;
+      height: 3.5rem;
+      width: 3.5rem;
+      font-size: 3rem;
+      color: #555555;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+      border: 0px;
+      background-color: white;
+    }
+  }
+}
+.prevBtn {
+  transform: translate(-699px, 136px);
+}
+.nextBtn {
+  transform: translate(700px, 136px);
+}
+// @mixin slide-btn($name, $x, $y) {
+//   .#{$name} {
+//     transform: translate(#{$x}px, #{$y}px);
+//   }
+// }
+// @include slide-btn("top-prevBtn", -680, 136);
+// @include slide-btn("top-nextBtn", 700, 136);
+// @include slide-btn("bttm-prev", -680, 86);
+// @include slide-btn("bttm-next", 700, 86);

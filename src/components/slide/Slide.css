@@ -1,0 +1,35 @@
+.slideList {
+  display: flex;
+  position: relative;
+}
+.slideList-content {
+  display: flex;
+  width: 1400px;
+  justify-content: center;
+  overflow: hidden;
+  margin: auto auto;
+}
+.slideList-content__cards {
+  display: flex;
+  z-index: -1;
+}
+.slideList-content__arrow {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 3rem;
+  color: #555555;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  border: 0px;
+  background-color: white;
+}
+
+.prevBtn {
+  transform: translate(-699px, 136px);
+}
+
+.nextBtn {
+  transform: translate(700px, 136px);
+}/*# sourceMappingURL=Slide.css.map */
